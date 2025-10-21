@@ -336,3 +336,55 @@ document.addEventListener('keydown', function(e) {
         }
     }
 });
+
+// Mobile touch events for photoshoot gallery
+let touchStartX = 0;
+let touchEndX = 0;
+let galleryCurrentIndex = 0;
+const galleryPhotos = document.querySelectorAll('.photo-gallery img');
+
+// Add touch events to photoshoot gallery
+const photoGallery = document.querySelector('.photo-gallery');
+if (photoGallery) {
+    photoGallery.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    photoGallery.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        const swipeThreshold = 50; // Minimum distance for a swipe
+        const swipeDistance = touchEndX - touchStartX;
+
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+            if (swipeDistance > 0) {
+                // Swipe right - previous photo
+                showPreviousPhoto();
+            } else {
+                // Swipe left - next photo
+                showNextPhoto();
+            }
+        }
+    }
+
+    function showPreviousPhoto() {
+        galleryCurrentIndex = (galleryCurrentIndex - 1 + galleryPhotos.length) % galleryPhotos.length;
+        scrollToPhoto(galleryCurrentIndex);
+    }
+
+    function showNextPhoto() {
+        galleryCurrentIndex = (galleryCurrentIndex + 1) % galleryPhotos.length;
+        scrollToPhoto(galleryCurrentIndex);
+    }
+
+    function scrollToPhoto(index) {
+        const photoWidth = photoGallery.clientWidth;
+        photoGallery.scrollTo({
+            left: index * photoWidth,
+            behavior: 'smooth'
+        });
+    }
+}
