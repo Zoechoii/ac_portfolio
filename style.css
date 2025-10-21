@@ -877,12 +877,12 @@ display: none;
 }
 
 /* Adjust positioning for mobile - better spacing for touch */
-.item-1 { top: 8%; left: 5%; }
-.item-2 { top: 8%; right: 5%; }
-.item-3 { top: 35%; left: 3%; }
-.item-4 { top: 35%; right: 3%; }
-.item-5 { bottom: 15%; left: 8%; }
-.item-6 { bottom: 15%; right: 8%; }
+.item-1 { top: 5%; left: 2%; } /* More spread out */
+.item-2 { top: 5%; right: 2%; } /* More spread out */
+.item-3 { top: 30%; left: 1%; } /* More spread out */
+.item-4 { top: 30%; right: 1%; } /* More spread out */
+.item-5 { bottom: 20%; left: 5%; } /* More spread out */
+.item-6 { bottom: 20%; right: 5%; } /* More spread out */
 /* .item-7 positioning is handled by main CSS with !important */
 }
 
@@ -1071,6 +1071,13 @@ opacity: 1 !important;
 transform: translateX(-50%) scale(1) !important;
 bottom: -65px !important;
 display: block !important;
+position: absolute;
+bottom: -60px;
+left: 50%;
+transform: translateX(-50%) scale(1);
+pointer-events: none;
+z-index: 1000;
+white-space: nowrap;
 }
 
 .ipod-player {
