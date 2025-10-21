@@ -953,37 +953,62 @@ box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
 /* Mobile responsive styles */
 @media (max-width: 768px) {
 .bio-panel {
-width: 85%;
-max-width: 350px;
+width: 75%;
+max-width: 300px;
 right: -100%;
 background: #fff;
 height: 100vh;
 overflow-y: auto;
-padding-bottom: 50px; /* Add extra padding at bottom for better scrolling */
+padding-bottom: 60px;
+border-radius: 0 0 0 20px;
+box-shadow: -15px 0 50px rgba(255, 105, 180, 0.2);
+transition: right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bio-panel.active {
+right: 0;
+box-shadow: -20px 0 60px rgba(255, 105, 180, 0.3);
 }
 
 .bio-toggle {
 top: 50%;
 right: 0;
-padding: 30px 12px;
-font-size: 12px;
-border-radius: 0; /* Keep it square on mobile too */
+padding: 35px 15px;
+font-size: 13px;
+border-radius: 0;
+background: #FF69B4;
+box-shadow: -8px 0 25px rgba(255, 105, 180, 0.4);
+transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .bio-toggle:hover {
-padding: 35px 12px;
+padding: 40px 18px;
+right: -5px;
+box-shadow: -12px 0 35px rgba(255, 105, 180, 0.6);
+transform: translateY(-50%) scale(1.05);
 }
 
 .bio-close {
-width: 35px;
-height: 35px;
-font-size: 24px;
-top: 15px;
-right: 15px;
+width: 40px;
+height: 40px;
+font-size: 26px;
+top: 20px;
+right: 20px;
+background: #FF69B4;
+border: 2px solid #fff;
+border-radius: 50%;
+box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bio-close:hover {
+transform: rotate(90deg) scale(1.1);
+box-shadow: 0 8px 25px rgba(255, 105, 180, 0.6);
 }
 
 .bio-content {
-padding: 70px 20px 80px 20px; /* Increased bottom padding for better scrolling */
+padding: 70px 20px 90px 20px;
+background: transparent;
 }
 
 .bio-content h2 {
