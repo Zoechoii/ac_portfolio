@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Y2K 아이팟 스타일 플레이어 -->
+    <!-- Y2K iPod Style Player -->
 <div class="ipod-player">
     <div class="ipod-screen">
         <div class="track-info">
@@ -24,64 +23,86 @@
         </div>
     </div>
     <div class="ipod-controls">
-        <button class="ipod-btn prev-btn" id="prevBtn">⏮</button>
+        <button class="ipod-btn prev-btn" id="prevBtn">◄</button>
         <button class="ipod-btn play-btn-ipod" id="playBtnIpod">▶</button>
-        <button class="ipod-btn next-btn" id="nextBtn">⏭</button>
+        <button class="ipod-btn next-btn" id="nextBtn">►</button>
     </div>
 </div>
+
+    <!-- Bio Toggle Button -->
+    <button class="bio-toggle" id="bioToggle">About Me</button>
+
+    <!-- Bio Panel -->
+    <div class="bio-panel" id="bioPanel">
+        <button class="bio-close" id="bioClose">×</button>
+        <div class="bio-content">
+            <h2>AC (dot robot)</h2>
+            <p>AC (dot robot) is a London-based DJ and producer whose sets erupt with intensity, precision, and power. Drawing from hardcore, hard techno, and hard trance, her sound is fast, visceral, and emotionally charged, but never chaotic.</p>
+            
+            <p>Known for her tight mixing and explosive stage presence, she commands the decks with both raw energy and technical finesse. Her signature dot makeup isn't just a visual, it's warpaint for the club battlefield.</p>
+            
+            <p>Since launching her DJ career in 2024, AC (dot robot) has quickly built a reputation for igniting every dance floor she touched. She was the Resident DJ and ½ organizer for London underground Queer clubnight "It's not a phase", also part of London-Korea label DHJ.</p>
+            
+            <p>She has performed at London staples such as Village Underground, Color Factory, MOT, The Cause, Egg London, and XOYO; brought the heat to SXSW and FKA twigs' album release party; played for Wraith club, Planet Fun, Nitecawr, HostileTakeover, and collaborated both as a DJ and model with the alternative Asian subculture collective Eastern Margins etc.</p>
+            
+            <p>Most recently, as one of the organizers and DJs of the team, she completed a four-city tour across China and South Korea.</p>
+            
+            <p>As a producer, AC (dot robot) is signed to Adhesive, an underground electronic label celebrated for its forward-thinking vision and uncompromising edge. Her productions mirror the same high-octane energy and emotional depth as their performances, pushing the boundaries of hardcore, hard techno, and hard trance.</p>
+            
+            <p>Her sets don't just move bodies, she demands total surrender. AC (dot robot) reclaims the club as a space of intensity, release, and transformation, one beat at a time.</p>
+        </div>
+    </div>
+
     <div class="container">
-        <img src="background.jpg" alt="Background" class="background-image" id="bgImage">    <div class="clickable-items">
+        <img src="background.jpg" alt="Background" class="background-image" id="bgImage">
+        <div class="clickable-items">
         <div class="item item-1" data-url="https://ra.co/dj/acdotrobot">
             <div class="eye">
                 <img src="eye1.png" alt="Eye 1">
             </div>
+            <div class="tooltip">Resident Advisor</div>
         </div>
         <div class="item item-2" data-url="https://www.instagram.com/ac_dot_robot/">
             <div class="eye">
                 <img src="eye2.png" alt="Eye 2">
             </div>
+            <div class="tooltip">Instagram</div>
         </div>
         <div class="item item-3" data-url="https://acdotrobot.bandcamp.com/album/def-not-oldschool">
             <div class="eye">
                 <img src="eye3.png" alt="Eye 3">
             </div>
+            <div class="tooltip">Bandcamp</div>
         </div>
         <div class="item item-4" data-url="https://www.instagram.com/p/DOD2sRADTT3/?igsh=MWpwNGxuMWJlZGc0ZA%3D%3D">
             <div class="eye">
                 <img src="eye4.png" alt="Eye 4">
             </div>
+            <div class="tooltip">Latest Post</div>
         </div>
         <div class="item item-5" data-url="https://ra.co/events/2265360">
             <div class="eye">
                 <img src="eye5.png" alt="Eye 5">
             </div>
+            <div class="tooltip">Upcoming Event</div>
         </div>
         <div class="item item-6" data-url="https://example.com/page6">
             <div class="eye">
                 <img src="eye6.png" alt="Eye 6">
             </div>
-        </div>        <!-- 가운데 음악 버튼 -->
-        <a href="https://soundcloud.com/user-523526653?ref=clipboard&p=i&c=1&si=550751A6631542E6B8CBCED96134C8C1&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" target="_blank" class="music-button" id="musicButton">
-            <img src="music-icon.png" alt="Music Button">
-        </a>
-         <div class="bio-text">
-        <p>AC (dot robot) is a London-based DJ and producer whose sets erupt with intensity, precision, and power. Drawing from hardcore, hard techno, and hard trance, her sound is fast, visceral, and emotionally charged, but never chaotic.</p>
+            <div class="tooltip">Link 6</div>
+        </div>
         
-        <p>Known for her tight mixing and explosive stage presence, she commands the decks with both raw energy and technical finesse. Her signature dot makeup isn't just a visual, it's warpaint for the club battlefield.</p>
-        
-        <p>Since launching her DJ career in 2024, AC (dot robot) has quickly built a reputation for igniting every dance floor she touched. She was the Resident DJ and ½ organizer for London underground Queer clubnight "It's not a phase", also part of London-Korea label DHJ.</p>
-        
-        <p>She has performed at London staples such as Village Underground, Color Factory, MOT, The Cause, Egg London, and XOYO; brought the heat to SXSW and FKA twigs' album release party; played for Wraith club, Planet Fun, Nitecawr, HostileTakeover, and collaborated both as a DJ and model with the alternative Asian subculture collective Eastern Margins etc.</p>
-        
-        <p>Most recently, as one of the organizers and DJs of the team, she completed a four-city tour across China and South Korea.</p>
-        
-        <p>As a producer, AC (dot robot) is signed to Adhesive, an underground electronic label celebrated for its forward-thinking vision and uncompromising edge. Her productions mirror the same high-octane energy and emotional depth as their performances, pushing the boundaries of hardcore, hard techno, and hard trance.</p>
-        
-        <p>Her sets don't just move bodies, she demands total surrender. AC (dot robot) reclaims the club as a space of intensity, release, and transformation, one beat at a time.</p>
-    </div>
+        <!-- Center Music Button (Eye Style) -->
+        <div class="item item-center" data-url="https://soundcloud.com/user-523526653?ref=clipboard&p=i&c=1&si=550751A6631542E6B8CBCED96134C8C1&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing">
+            <div class="eye">
+                <img src="music-icon.png" alt="SoundCloud">
+            </div>
+            <div class="tooltip">SoundCloud!</div>
+        </div>
 
     </div>
-</div><script src="script.js"></script>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
-</artifact>

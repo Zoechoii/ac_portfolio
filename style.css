@@ -1,7 +1,30 @@
-body {
+.bio-content {
+padding: 90px 40px 40px 40px;
+position: relative;
+z-index: 1;
+}
+
+.bio-content h2 {
+color: #fff;
+font-size: 36px;
+margin-bottom: 20px;
+font-weight: bold;
+text-align: center;
+text-shadow: 3px 3px 0px #ff006e, 
+             -2px -2px 0px #00d4ff,
+             5px 5px 15px rgba(0, 0, 0, 0.3);
+letter-spacing: 2px;
+animation: titlePulse 2s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+0%, 100% { transform: scale(1); }
+50% { transform: scale(1.02); }
+}body {
 font-family: 'Arial', sans-serif;
-overflow: hidden;
 background: #000;
+margin: 0;
+padding: 0;
 }
 .container {
 position: relative;
@@ -32,51 +55,33 @@ cursor: pointer;
 transition: all 0.3s ease;
 animation: float 3s ease-in-out infinite;
 }
-/* PNG 이미지로 대체된 눈 스타일 */
+/* PNG image eye style */
 .eye {
-width: 320px;
-height: 320px;
+width: 250px;
+height: 250px;
 position: relative;
 transition: all 0.3s ease;
-
+pointer-events: auto;
 }
 .eye img {
 width: 100%;
 height: 100%;
 object-fit: contain;
+pointer-events: none;
 }
 .pupil {
 display: none;
 }
-.item:hover .eye {
+.eye:hover {
 transform: scale(1.3) rotate(15deg);
 animation: shake 0.3s infinite;
 }
-/* 가운데 음악 버튼 스타일 */
-.music-button {
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-width: 500px;
-height: 500px;
-cursor: pointer;
-transition: all 0.4s ease;
-z-index: 10;
-padding: 0px
+
+.item:hover {
+z-index: 100;
 }
-.music-button img {
-width: 100%;
-height: 100%;
-object-fit: contain;
-}
-.music-button:hover {
-transform: translate(-50%, -50%) scale(1.2) rotate(10deg);
-}
-.music-button.playing {
-animation: spin 3s linear infinite, pulse 2s ease-in-out infinite;
-}
-/* 각 아이템의 위치 */
+
+/* Position of each item */
 .item-1 {
 top: 15%;
 left: 20%;
@@ -107,7 +112,22 @@ bottom: 20%;
 right: 20%;
 animation-delay: 2.5s;
 }
-/* 떠다니는 애니메이션 */
+
+/* Center item (SoundCloud) */
+.item-center {
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+animation: none;
+z-index: 10;
+}
+
+.item-center .eye {
+width: 400px;
+height: 400px;
+}
+
+/* Floating animation */
 @keyframes float {
 0%, 100% {
 transform: translateY(0px);
@@ -116,7 +136,18 @@ transform: translateY(0px);
 transform: translateY(-20px);
 }
 }
-/* 펄스 애니메이션 */
+
+/* Center item float animation adjustment */
+@keyframes centerfloat {
+0%, 100% {
+transform: translate(-50%, -50%) translateY(0px);
+}
+50% {
+transform: translate(-50%, -50%) translateY(-15px);
+}
+}
+
+/* Pulse animation */
 @keyframes pulse {
 0%, 100% {
 transform: translate(-50%, -50%) scale(1);
@@ -125,7 +156,8 @@ transform: translate(-50%, -50%) scale(1);
 transform: translate(-50%, -50%) scale(1.1);
 }
 }
-/* 회전 애니메이션 */
+
+/* Rotation animation */
 @keyframes spin {
 from {
 transform: translate(-50%, -50%) rotate(0deg);
@@ -135,115 +167,315 @@ transform: translate(-50%, -50%) rotate(360deg);
 }
 }
 
-/* 아치형 바이오 텍스트 */
-.bio-text {
-    position: fixed;
-    top: 60px;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 600px;
-    z-index: 999;
-    pointer-events: none;
+@keyframes musicspin {
+from {
+transform: rotate(0deg);
+}
+to {
+transform: rotate(360deg);
+}
 }
 
-.bio-text p {
-    position: absolute;
-    color: #fff;
-    font-family: 'Courier New', monospace;
-    font-size: 12px;
-    line-height: 1.3;
-    margin: 0;
-    text-shadow: 2px 2px 0px #ff006e, 
-                 -1px -1px 0px #000,
-                 3px 3px 5px rgba(0, 0, 0, 0.8);
-    letter-spacing: 0.5px;
-    max-width: 320px;
+@keyframes musicpulse {
+0%, 100% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.1);
+}
 }
 
-/* 아치 형태로 배치 - 왼쪽 */
-.bio-text p:nth-child(1) {
-    top: 5px;
-    left: 10%;
+/* Bio Toggle Button */
+.bio-toggle {
+position: fixed;
+bottom: 30px;
+right: 30px;
+padding: 15px 30px;
+background: linear-gradient(145deg, #ff006e, #d1005d);
+color: #fff;
+border: 3px solid #fff;
+border-radius: 30px;
+font-size: 16px;
+font-weight: bold;
+cursor: pointer;
+z-index: 999;
+box-shadow: 0 8px 20px rgba(255, 0, 110, 0.4),
+            0 0 0 5px rgba(255, 0, 110, 0.2);
+transition: all 0.3s ease;
+text-transform: uppercase;
+letter-spacing: 2px;
+animation: floatButton 3s ease-in-out infinite;
 }
 
-.bio-text p:nth-child(2) {
-    top: 100px;
-    left: 3%;
+@keyframes floatButton {
+0%, 100% { transform: translateY(0px); }
+50% { transform: translateY(-8px); }
 }
 
-.bio-text p:nth-child(3) {
-    top: 190px;
-    left: 4%;
+.bio-toggle:hover {
+transform: translateY(-3px) scale(1.05);
+box-shadow: 0 12px 30px rgba(255, 0, 110, 0.6),
+            0 0 0 8px rgba(255, 0, 110, 0.3);
+animation: none;
 }
 
-.bio-text p:nth-child(4) {
-    top: 310px;
-    left: 2%;
+.bio-toggle:active {
+transform: translateY(0px) scale(0.95);
 }
 
-/* 아치 형태로 배치 - 오른쪽 */
-.bio-text p:nth-child(5) {
-    top: 10px;
-    right: 10%;
-    text-align: right;
+/* Bio Panel */
+.bio-panel {
+position: fixed;
+top: 0;
+right: -600px;
+width: 500px;
+height: 100vh;
+background: linear-gradient(135deg, #ffd1dc 0%, #ffb3d9 50%, #c9a0dc 100%);
+z-index: 1001;
+overflow-y: auto;
+transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+box-shadow: -10px 0 40px rgba(255, 0, 110, 0.5);
+border-left: 5px solid #fff;
 }
 
-.bio-text p:nth-child(6) {
-    top: 90px;
-    right: 5%;
-    text-align: right;
+.bio-panel::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-image: 
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255, 0, 110, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+pointer-events: none;
+animation: bgShimmer 8s ease-in-out infinite;
 }
 
-.bio-text p:nth-child(7) {
-    top: 210px;
-    right: 3%;
-    text-align: right;
+@keyframes bgShimmer {
+0%, 100% { opacity: 0.5; }
+50% { opacity: 1; }
 }
 
-/* 반응형 */
-@media (max-width: 768px) {
-    .bio-text {
-        top: 50px;
-        height: 500px;
-    }
-    
-    .bio-text p {
-        font-size: 9px;
-        max-width: 200px;
-        line-height: 1.2;
-    }
-    
-    .bio-text p:nth-child(1) { top: 5px; left: 8%; }
-    .bio-text p:nth-child(2) { top: 60px; left: 5%; }
-    .bio-text p:nth-child(3) { top: 130px; left: 3%; }
-    .bio-text p:nth-child(4) { top: 220px; left: 5%; }
-    .bio-text p:nth-child(5) { top: 5px; right: 8%; }
-    .bio-text p:nth-child(6) { top: 60px; right: 5%; }
-    .bio-text p:nth-child(7) { top: 130px; right: 3%; }
+.bio-panel.active {
+right: 0;
 }
 
-/* 반응형 디자인 */
+.bio-close {
+position: absolute;
+top: 20px;
+right: 20px;
+width: 50px;
+height: 50px;
+background: linear-gradient(145deg, #ff006e, #ff3385);
+color: #fff;
+border: 3px solid #fff;
+border-radius: 50%;
+font-size: 32px;
+line-height: 1;
+cursor: pointer;
+transition: all 0.3s ease;
+box-shadow: 0 6px 20px rgba(255, 0, 110, 0.5),
+            inset 0 2px 10px rgba(255, 255, 255, 0.3);
+z-index: 10;
+}
+
+.bio-close:hover {
+background: linear-gradient(145deg, #d1005d, #ff006e);
+transform: rotate(90deg) scale(1.1);
+box-shadow: 0 8px 25px rgba(255, 0, 110, 0.7);
+}
+
+.bio-close:active {
+transform: rotate(90deg) scale(0.9);
+}
+
+.bio-content {
+padding: 80px 40px 40px 40px;
+}
+
+.bio-content h2 {
+color: #fff;
+font-size: 36px;
+margin-bottom: 20px;
+font-weight: bold;
+text-align: center;
+text-shadow: 3px 3px 0px #ff006e, 
+             -2px -2px 0px #00d4ff,
+             5px 5px 15px rgba(0, 0, 0, 0.3);
+letter-spacing: 2px;
+animation: titlePulse 2s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+0%, 100% { transform: scale(1); }
+50% { transform: scale(1.02); }
+}
+
+.bio-content p {
+color: #000;
+background: rgba(255, 255, 255, 0.85);
+font-size: 15px;
+line-height: 1.8;
+margin-bottom: 15px;
+text-align: left;
+padding: 15px 20px;
+border-radius: 20px;
+border: 3px solid #fff;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1),
+            inset 0 2px 10px rgba(255, 255, 255, 0.5);
+backdrop-filter: blur(5px);
+transition: all 0.3s ease;
+position: relative;
+}
+
+.bio-content p::before {
+content: '★';
+position: absolute;
+top: -15px;
+left: 20px;
+font-size: 24px;
+color: #ff006e;
+text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.bio-content p:nth-child(even)::before {
+content: '♥';
+}
+
+.bio-content p:hover {
+transform: translateX(-5px);
+box-shadow: 0 6px 20px rgba(255, 0, 110, 0.3),
+            inset 0 2px 10px rgba(255, 255, 255, 0.7);
+border-color: #ff006e;
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
 .eye {
-width: 70px;
-height: 70px;
-}
-.music-button {
-    width: 100px;
-    height: 100px;
+width: 90px;
+height: 90px;
 }
 
-.item-1 { top: 10%; left: 10%; }
-.item-2 { top: 15%; right: 10%; }
-.item-3 { top: 45%; left: 5%; }
-.item-4 { top: 45%; right: 5%; }
-.item-5 { bottom: 15%; left: 15%; }
-.item-6 { bottom: 15%; right: 15%; }
+.item-center .eye {
+width: 140px;
+height: 140px;
+}
+
+.item-1 { top: 12%; left: 8%; }
+.item-2 { top: 12%; right: 8%; }
+.item-3 { top: 48%; left: 3%; }
+.item-4 { top: 48%; right: 3%; }
+.item-5 { bottom: 18%; left: 12%; }
+.item-6 { bottom: 18%; right: 12%; }
+
+.bio-panel {
+width: 90%;
+right: -100%;
+background: linear-gradient(135deg, #ffd1dc 0%, #ffb3d9 100%);
+}
+
+.bio-toggle {
+bottom: 20px;
+right: 20px;
+padding: 12px 24px;
+font-size: 13px;
+letter-spacing: 1px;
+}
+
+.bio-close {
+width: 45px;
+height: 45px;
+font-size: 28px;
+top: 15px;
+right: 15px;
+}
+
+.bio-content {
+padding: 70px 25px 30px 25px;
+}
+
+.bio-content h2 {
+font-size: 26px;
+text-shadow: 2px 2px 0px #ff006e, 
+             -1px -1px 0px #00d4ff,
+             3px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.bio-content p {
+font-size: 13px;
+padding: 12px 15px;
+line-height: 1.6;
+}
+
+.bio-content p::before {
+font-size: 18px;
+top: -12px;
+left: 15px;
+}
+}
+
+/* Tablet responsive (iPad) */
+@media (min-width: 769px) and (max-width: 1024px) {
+.eye {
+width: 200px;
+height: 200px;
+}
+
+.item-center .eye {
+width: 300px;
+height: 300px;
+}
+
+.item-1 { top: 12%; left: 15%; }
+.item-2 { top: 12%; right: 15%; }
+.item-3 { top: 48%; left: 8%; }
+.item-4 { top: 48%; right: 8%; }
+.item-5 { bottom: 18%; left: 18%; }
+.item-6 { bottom: 18%; right: 18%; }
+
+.bio-panel {
+width: 450px;
+}
+
+.bio-toggle {
+bottom: 25px;
+right: 25px;
+}
+}
+
+/* Large desktop */
+@media (min-width: 1600px) {
+.eye {
+width: 380px;
+height: 380px;
+}
+
+.item-center .eye {
+width: 480px;
+height: 480px;
+}
+
+.item-1 { top: 15%; left: 22%; }
+.item-2 { top: 15%; right: 22%; }
+.item-3 { top: 50%; left: 12%; }
+.item-4 { top: 50%; right: 12%; }
+.item-5 { bottom: 20%; left: 26%; }
+.item-6 { bottom: 20%; right: 26%; }
+
+.bio-content h2 {
+font-size: 40px;
+}
+
+.bio-content p {
+font-size: 17px;
+padding: 18px 25px;
+}
 }
 
 
-/* Y2K 아이팟 스타일 플레이어 - 가로 길고 세로 초슬림 */
+/* Y2K iPod style player - Horizontal long, vertically slim */
 .ipod-player {
     position: fixed;
     top: 10px;
@@ -421,33 +653,122 @@ height: 70px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* 반응형 */
+/* Responsive */
 @media (max-width: 768px) {
     .ipod-player {
-        width: 90%;
-        max-width: 400px;
-        padding: 5px 10px;
-        gap: 8px;
+        width: 95%;
+        max-width: 380px;
+        padding: 4px 8px;
+        gap: 6px;
+        top: 8px;
     }
     
     .track-title {
-        font-size: 9px;
+        font-size: 8px;
+    }
+    
+    .track-artist {
+        font-size: 7px;
     }
     
     .ipod-btn {
-        width: 26px;
-        height: 26px;
-        font-size: 10px;
+        width: 24px;
+        height: 24px;
+        font-size: 9px;
     }
     
     .play-btn-ipod {
-        width: 30px;
-        height: 30px;
+        width: 28px;
+        height: 28px;
         font-size: 11px;
     }
     
     .volume-control {
-        min-width: 80px;
+        display: none;
+    }
+    
+    .time-current,
+    .time-total {
+        font-size: 7px;
     }
 }
 
+@media (min-width: 769px) and (max-width: 1024px) {
+    .ipod-player {
+        width: 480px;
+    }
+}
+
+/* Old iPhone style speech bubble */
+.tooltip {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    background: linear-gradient(180deg, #e8e8e8 0%, #c8c8c8 100%);
+    color: #000;
+    padding: 8px 14px;
+    border-radius: 18px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.tooltip::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #e8e8e8;
+    filter: drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.1));
+}
+
+.item:hover .tooltip {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+    bottom: -55px;
+}
+
+/* Responsive tooltip */
+@media (max-width: 768px) {
+    .tooltip {
+        font-size: 10px;
+        padding: 5px 10px;
+        bottom: -40px;
+    }
+    
+    .item:hover .tooltip {
+        bottom: -45px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .tooltip {
+        font-size: 12px;
+        padding: 7px 12px;
+    }
+    
+    .bio-panel {
+        width: 450px;
+    }
+    
+    .bio-toggle {
+        bottom: 25px;
+        right: 25px;
+        font-size: 15px;
+    }
+}
