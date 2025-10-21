@@ -32,24 +32,25 @@
     <!-- Bio Toggle Button -->
     <button class="bio-toggle" id="bioToggle">About Me</button>
 
+
     <!-- Bio Panel -->
     <div class="bio-panel" id="bioPanel">
         <button class="bio-close" id="bioClose">×</button>
         <div class="bio-content">
-            <h2>AC (dot robot)</h2>
-            <p>AC (dot robot) is a London-based DJ and producer whose sets erupt with intensity, precision, and power. Drawing from hardcore, hard techno, and hard trance, her sound is fast, visceral, and emotionally charged, but never chaotic.</p>
+            <h2 class="ac-name">AC (dot robot)</h2>
+            <p><span class="highlight">AC (dot robot)</span> is a London-based DJ and producer whose sets erupt with intensity, precision, and power. Drawing from hardcore, hard techno, and hard trance, her sound is fast, visceral, and emotionally charged, but never chaotic.</p>
             
             <p>Known for her tight mixing and explosive stage presence, she commands the decks with both raw energy and technical finesse. Her signature dot makeup isn't just a visual, it's warpaint for the club battlefield.</p>
             
-            <p>Since launching her DJ career in 2024, AC (dot robot) has quickly built a reputation for igniting every dance floor she touched. She was the Resident DJ and ½ organizer for London underground Queer clubnight "It's not a phase", also part of London-Korea label DHJ.</p>
+            <p>Since launching her DJ career in 2024, <span class="highlight">AC (dot robot)</span> has quickly built a reputation for igniting every dance floor she touched. She was the Resident DJ and ½ organizer for London underground Queer clubnight <span class="highlight">"It's not a phase"</span>, also part of London-Korea label <span class="highlight">DHJ</span>.</p>
             
-            <p>She has performed at London staples such as Village Underground, Color Factory, MOT, The Cause, Egg London, and XOYO; brought the heat to SXSW and FKA twigs' album release party; played for Wraith club, Planet Fun, Nitecawr, HostileTakeover, and collaborated both as a DJ and model with the alternative Asian subculture collective Eastern Margins etc.</p>
+            <p>She has performed at London staples such as <span class="highlight">Village Underground</span>, <span class="highlight">Color Factory</span>, <span class="highlight">MOT</span>, <span class="highlight">The Cause</span>, <span class="highlight">Egg London</span>, and <span class="highlight">XOYO</span>; brought the heat to <span class="highlight">SXSW</span> and <span class="highlight">FKA twigs</span>' album release party; played for <span class="highlight">Wraith club</span>, <span class="highlight">Planet Fun</span>, <span class="highlight">Nitecawr</span>, <span class="highlight">HostileTakeover</span>, and collaborated both as a DJ and model with the alternative Asian subculture collective <span class="highlight">Eastern Margins</span> etc.</p>
             
             <p>Most recently, as one of the organizers and DJs of the team, she completed a four-city tour across China and South Korea.</p>
             
-            <p>As a producer, AC (dot robot) is signed to Adhesive, an underground electronic label celebrated for its forward-thinking vision and uncompromising edge. Her productions mirror the same high-octane energy and emotional depth as their performances, pushing the boundaries of hardcore, hard techno, and hard trance.</p>
+            <p>As a producer, <span class="highlight">AC (dot robot)</span> is signed to <span class="highlight">Adhesive</span>, an underground electronic label celebrated for its forward-thinking vision and uncompromising edge. Her productions mirror the same high-octane energy and emotional depth as their performances, pushing the boundaries of hardcore, hard techno, and hard trance.</p>
             
-            <p>Her sets don't just move bodies, she demands total surrender. AC (dot robot) reclaims the club as a space of intensity, release, and transformation, one beat at a time.</p>
+            <p>Her sets don't just move bodies, she demands total surrender. <span class="highlight">AC (dot robot)</span> reclaims the club as a space of intensity, release, and transformation, one beat at a time.</p>
         </div>
     </div>
 
@@ -62,6 +63,7 @@
             </div>
             <div class="tooltip">Resident Advisor</div>
         </div>
+        
         <div class="item item-2" data-url="https://www.instagram.com/ac_dot_robot/">
             <div class="eye">
                 <img src="eye2.png" alt="Eye 2">
@@ -80,29 +82,131 @@
             </div>
             <div class="tooltip">Latest Post</div>
         </div>
-        <div class="item item-5" data-url="https://ra.co/events/2265360">
+        <div class="item item-5" id="photoshootBtn">
             <div class="eye">
                 <img src="eye5.png" alt="Eye 5">
             </div>
-            <div class="tooltip">Upcoming Event</div>
+            <div class="tooltip">Photoshoot</div>
         </div>
-        <div class="item item-6" data-url="https://example.com/page6">
+        
+        <div class="item item-6" id="contactBtn">
             <div class="eye">
                 <img src="eye6.png" alt="Eye 6">
             </div>
-            <div class="tooltip">Link 6</div>
+            <div class="tooltip">Contact</div>
         </div>
         
-        <!-- Center Music Button (Eye Style) -->
-        <div class="item item-center" data-url="https://soundcloud.com/user-523526653?ref=clipboard&p=i&c=1&si=550751A6631542E6B8CBCED96134C8C1&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing">
+        <div class="item item-7" data-url="https://soundcloud.com/user-523526653?ref=clipboard&p=i&c=1&si=550751A6631542E6B8CBCED96134C8C1&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing">
             <div class="eye">
                 <img src="music-icon.png" alt="SoundCloud">
             </div>
             <div class="tooltip">SoundCloud!</div>
         </div>
-
+        </div>
     </div>
-</div>
+
+    <!-- MacBook Style Contact Popup -->
+    <div class="contact-popup" id="contactPopup">
+        <div class="macbook-window">
+            <div class="macbook-titlebar">
+                <div class="macbook-traffic-lights">
+                    <div class="traffic-light close"></div>
+                    <div class="traffic-light minimize"></div>
+                    <div class="traffic-light maximize"></div>
+                </div>
+                <div class="macbook-title">Contact</div>
+            </div>
+            <div class="macbook-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-label">Email:</span>
+                        <span class="contact-value">acdotrobot@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Instagram:</span>
+                        <span class="contact-value">ac_dot_robot</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MacBook Style Photoshoot Popup -->
+    <div class="photoshoot-popup" id="photoshootPopup">
+        <div class="macbook-window photoshoot-window">
+            <div class="macbook-titlebar">
+                <div class="macbook-traffic-lights">
+                    <div class="traffic-light close-photoshoot photoshoot-close"></div>
+                    <div class="traffic-light minimize"></div>
+                    <div class="traffic-light maximize"></div>
+                </div>
+                <div class="macbook-title">Click the photos to see it!</div>
+            </div>
+            <div class="macbook-content photoshoot-content">
+                <!-- ========================================== -->
+                <!-- 📸 PHOTO GALLERY - ADD NEW PHOTOS HERE 📸 -->
+                <!-- ========================================== -->
+                <!-- To add new photos: -->
+                <!-- 1. Copy a photo-item div below -->
+                <!-- 2. Change the src to your new photo filename -->
+                <!-- 3. Update the alt text -->
+                <!-- 4. The photo will automatically appear in the gallery! -->
+                <!-- ========================================== -->
+                <div class="photo-gallery">
+                    <div class="photo-item">
+                        <img src="IMG_9896.JPEG" alt="Photo 1" class="gallery-photo">
+                    </div>
+                    <div class="photo-item">
+                        <img src="IMG_8446.JPG" alt="Photo 2" class="gallery-photo">
+                    </div>
+                    <div class="photo-item">
+                        <img src="IMG_3845.jpg" alt="Photo 3" class="gallery-photo">
+                    </div>
+                    <div class="photo-item">
+                        <img src="IMG_3841.jpg" alt="Photo 4" class="gallery-photo">
+                    </div>
+                    <div class="photo-item">
+                        <img src="IMG_3796.JPG" alt="Photo 5" class="gallery-photo">
+                    </div>
+                    <div class="photo-item">
+                        <img src="IMG_1207.jpg" alt="Photo 6" class="gallery-photo">
+                    </div>
+                    <div class="photo-item">
+                        <img src="IMG_1004.JPG" alt="Photo 7" class="gallery-photo">
+                    </div>
+                    <div class="photo-item">
+                        <img src="IMG_0509.jpg" alt="Photo 8" class="gallery-photo">
+                    </div>
+                    <div class="photo-item">
+                        <img src="IMG_0401.HEIC" alt="Photo 9" class="gallery-photo">
+                    </div>
+                    <!-- 📸 ADD NEW PHOTOS HERE 📸 -->
+                    <!-- Copy this template and change the src/alt: -->
+                    <!-- 
+                    <div class="photo-item">
+                        <img src="YOUR_PHOTO_NAME.jpg" alt="Photo X" class="gallery-photo">
+                    </div>
+                    -->
+                </div>
+                <!-- ========================================== -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Photo Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose">&times;</button>
+            <div class="lightbox-controls">
+                <button class="zoom-btn" id="zoomIn">+</button>
+                <button class="zoom-btn" id="zoomOut">-</button>
+                <button class="zoom-btn" id="prevPhoto">←</button>
+                <button class="zoom-btn" id="nextPhoto">→</button>
+            </div>
+            <img class="lightbox-image" id="lightboxImage" alt="Fullscreen photo">
+        </div>
+    </div>
+
 <script src="script.js"></script>
 </body>
 </html>

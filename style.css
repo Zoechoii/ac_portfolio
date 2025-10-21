@@ -1,41 +1,48 @@
-.bio-content {
-padding: 90px 40px 40px 40px;
+.item-center {
 position: relative;
-z-index: 1;
+transform: none;
+width: 100%;
+z-index: 5;
+margin: 40px 0;
 }
 
-.bio-content h2 {
-color: #fff;
-font-size: 36px;
-margin-bottom: 20px;
-font-weight: bold;
-text-align: center;
-text-shadow: 3px 3px 0px #ff006e, 
-             -2px -2px 0px #00d4ff,
-             5px 5px 15px rgba(0, 0, 0, 0.3);
-letter-spacing: 2px;
-animation: titlePulse 2s ease-in-out infinite;
-}
-
-@keyframes titlePulse {
-0%, 100% { transform: scale(1); }
-50% { transform: scale(1.02); }
+.item-center .eye {
+width: 85%;
+height: auto;
+max-width: 350px;
+aspect-ratio: 1;
+padding: 0;
+margin: 0 auto;
+border: none;
+background: none;
+box-shadow: none;
+display: block;
 }body {
 font-family: 'Arial', sans-serif;
-background: #000;
+background: #fff;
 margin: 0;
 padding: 0;
 }
+
 .container {
 position: relative;
 width: 100vw;
-height: 100vh;
+min-height: 100vh;
 display: flex;
 justify-content: center;
 align-items: center;
 }
+
+@media (max-width: 768px) {
+.container {
+overflow-y: auto;
+height: auto;
+align-items: flex-start;
+}
+}
+
 .background-image {
-position: absolute;
+position: fixed;
 top: 0;
 left: 0;
 width: 100vw;
@@ -43,88 +50,151 @@ height: 100vh;
 object-fit: cover;
 z-index: 1;
 }
+
+@media (max-width: 768px) {
+.background-image {
+position: absolute;
+height: 100%;
+min-height: 100vh;
+}
+}
+
 .clickable-items {
 position: absolute;
 width: 100%;
 height: 100%;
 z-index: 2;
 }
+
 .item {
-position: absolute;
-cursor: pointer;
-transition: all 0.3s ease;
-animation: float 3s ease-in-out infinite;
+    position: absolute;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite;
 }
-/* PNG image eye style */
-.eye {
-width: 250px;
-height: 250px;
-position: relative;
-transition: all 0.3s ease;
-pointer-events: auto;
-}
-.eye img {
-width: 100%;
-height: 100%;
-object-fit: contain;
-pointer-events: none;
-}
-.pupil {
-display: none;
-}
-.eye:hover {
-transform: scale(1.3) rotate(15deg);
-animation: shake 0.3s infinite;
+
+.item-7 {
+    animation: none !important;
 }
 
 .item:hover {
 z-index: 100;
+transition: all 0.3s ease;
 }
 
-/* Position of each item */
+/* Individual hover effects for each item */
+.item-1:hover {
+transform: rotate(-8deg) scale(1.05);
+}
+
+.item-2:hover {
+transform: rotate(12deg) scale(1.05);
+}
+
+.item-3:hover {
+transform: rotate(5deg) scale(1.05);
+}
+
+.item-4:hover {
+transform: rotate(-10deg) scale(1.05);
+}
+
+.item-5:hover {
+transform: rotate(7deg) scale(1.05);
+}
+
+.item-6:hover {
+transform: rotate(-5deg) scale(1.05);
+}
+
+.item:hover .eye {
+transform: scale(1.2) rotate(10deg);
+}
+
+/* PNG image eye style - NO BORDERS, NO PADDING */
+.eye {
+width: 320px;
+height: 320px;
+position: relative;
+transition: all 0.3s ease;
+padding: 0;
+margin: 0;
+}
+
+.eye img {
+width: 100%;
+height: 100%;
+object-fit: contain;
+}
+
+.pupil {
+display: none;
+}
+
+/* Collage-style positioning for desktop */
 .item-1 {
-top: 15%;
-left: 20%;
+top: 8%;
+left: 12%;
 animation-delay: 0s;
+transform: rotate(-8deg);
 }
+
 .item-2 {
-top: 15%;
-right: 25%;
+top: 10%;
+right: 15%;
 animation-delay: 0.5s;
+transform: rotate(12deg);
 }
+
 .item-3 {
-top: 50%;
-left: 10%;
+top: 35%;
+left: 5%;
 animation-delay: 1s;
+transform: rotate(5deg);
 }
+
 .item-4 {
-top: 50%;
-right: 10%;
+top: 38%;
+right: 8%;
 animation-delay: 1.5s;
+transform: rotate(-10deg);
 }
+
 .item-5 {
-bottom: 20%;
-left: 25%;
+bottom: 12%;
+left: 18%;
 animation-delay: 2s;
+transform: rotate(7deg);
 }
+
 .item-6 {
-bottom: 20%;
+bottom: 15%;
 right: 20%;
 animation-delay: 2.5s;
+transform: rotate(-5deg);
 }
 
-/* Center item (SoundCloud) */
-.item-center {
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-animation: none;
-z-index: 10;
+.item-7 {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) rotate(-3deg) !important;
+    animation-delay: 3s;
+    z-index: 10;
 }
 
-.item-center .eye {
-width: 400px;
-height: 400px;
+.item-7:hover {
+transform: translate(-50%, -50%) rotate(-3deg) scale(1.1) !important;
+transition: all 0.3s ease;
+}
+
+.item-7:hover .eye {
+transform: scale(1.2) rotate(10deg);
+}
+
+.item-7 .eye {
+width: 500px;
+height: 500px;
 }
 
 /* Floating animation */
@@ -133,129 +203,63 @@ height: 400px;
 transform: translateY(0px);
 }
 50% {
-transform: translateY(-20px);
+transform: translateY(-15px);
 }
 }
 
-/* Center item float animation adjustment */
-@keyframes centerfloat {
-0%, 100% {
-transform: translate(-50%, -50%) translateY(0px);
-}
-50% {
-transform: translate(-50%, -50%) translateY(-15px);
-}
-}
+/* Glitch animations removed */
 
-/* Pulse animation */
-@keyframes pulse {
-0%, 100% {
-transform: translate(-50%, -50%) scale(1);
-}
-50% {
-transform: translate(-50%, -50%) scale(1.1);
-}
-}
-
-/* Rotation animation */
-@keyframes spin {
-from {
-transform: translate(-50%, -50%) rotate(0deg);
-}
-to {
-transform: translate(-50%, -50%) rotate(360deg);
-}
-}
-
-@keyframes musicspin {
-from {
-transform: rotate(0deg);
-}
-to {
-transform: rotate(360deg);
-}
-}
-
-@keyframes musicpulse {
-0%, 100% {
-transform: scale(1);
-}
-50% {
-transform: scale(1.1);
-}
-}
-
-/* Bio Toggle Button */
+/* Bio Toggle Button - simple pink-white */
 .bio-toggle {
 position: fixed;
-bottom: 30px;
-right: 30px;
-padding: 15px 30px;
-background: linear-gradient(145deg, #ff006e, #d1005d);
+top: 50%;
+right: 0;
+transform: translateY(-50%);
+padding: 40px 15px;
+background: #FF69B4;
 color: #fff;
-border: 3px solid #fff;
-border-radius: 30px;
-font-size: 16px;
+border: 2px solid #fff;
+border-radius: 0;
+border-top-left-radius: 25px;
+border-bottom-left-radius: 25px;
+font-size: 14px;
 font-weight: bold;
 cursor: pointer;
 z-index: 999;
-box-shadow: 0 8px 20px rgba(255, 0, 110, 0.4),
-            0 0 0 5px rgba(255, 0, 110, 0.2);
-transition: all 0.3s ease;
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 text-transform: uppercase;
 letter-spacing: 2px;
-animation: floatButton 3s ease-in-out infinite;
-}
-
-@keyframes floatButton {
-0%, 100% { transform: translateY(0px); }
-50% { transform: translateY(-8px); }
+writing-mode: vertical-rl;
+text-orientation: mixed;
+box-shadow: -5px 0 20px rgba(255, 105, 180, 0.4);
+text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .bio-toggle:hover {
-transform: translateY(-3px) scale(1.05);
-box-shadow: 0 12px 30px rgba(255, 0, 110, 0.6),
-            0 0 0 8px rgba(255, 0, 110, 0.3);
-animation: none;
+background: #FF1493;
+right: -8px;
+padding: 45px 18px;
+transform: translateY(-50%) scale(1.05);
+box-shadow: -8px 0 25px rgba(255, 105, 180, 0.6);
 }
 
 .bio-toggle:active {
-transform: translateY(0px) scale(0.95);
+transform: translateY(-50%) scale(0.95);
 }
 
-/* Bio Panel */
+/* Bio Panel - white background */
 .bio-panel {
 position: fixed;
 top: 0;
-right: -600px;
-width: 500px;
+right: -400px;
+width: 380px;
 height: 100vh;
-background: linear-gradient(135deg, #ffd1dc 0%, #ffb3d9 50%, #c9a0dc 100%);
+background: #fff;
 z-index: 1001;
 overflow-y: auto;
-transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-box-shadow: -10px 0 40px rgba(255, 0, 110, 0.5);
-border-left: 5px solid #fff;
-}
-
-.bio-panel::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background-image: 
-    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(255, 0, 110, 0.2) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
-pointer-events: none;
-animation: bgShimmer 8s ease-in-out infinite;
-}
-
-@keyframes bgShimmer {
-0%, 100% { opacity: 0.5; }
-50% { opacity: 1; }
+transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+box-shadow: -10px 0 40px rgba(255, 105, 180, 0.3);
+border-left: 4px solid #FF69B4;
 }
 
 .bio-panel.active {
@@ -266,25 +270,25 @@ right: 0;
 position: absolute;
 top: 20px;
 right: 20px;
-width: 50px;
-height: 50px;
-background: linear-gradient(145deg, #ff006e, #ff3385);
+width: 45px;
+height: 45px;
+background: #FF69B4;
 color: #fff;
-border: 3px solid #fff;
+border: 2px solid #fff;
 border-radius: 50%;
-font-size: 32px;
+font-size: 24px;
 line-height: 1;
 cursor: pointer;
-transition: all 0.3s ease;
-box-shadow: 0 6px 20px rgba(255, 0, 110, 0.5),
-            inset 0 2px 10px rgba(255, 255, 255, 0.3);
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 z-index: 10;
+box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .bio-close:hover {
-background: linear-gradient(145deg, #d1005d, #ff006e);
+background: #FF1493;
 transform: rotate(90deg) scale(1.1);
-box-shadow: 0 8px 25px rgba(255, 0, 110, 0.7);
+box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
 }
 
 .bio-close:active {
@@ -292,129 +296,683 @@ transform: rotate(90deg) scale(0.9);
 }
 
 .bio-content {
-padding: 80px 40px 40px 40px;
+padding: 80px 25px 40px 25px;
+position: relative;
+z-index: 1;
 }
 
 .bio-content h2 {
-color: #fff;
+color: #FF69B4;
 font-size: 36px;
-margin-bottom: 20px;
+margin-bottom: 30px;
 font-weight: bold;
 text-align: center;
-text-shadow: 3px 3px 0px #ff006e, 
-             -2px -2px 0px #00d4ff,
-             5px 5px 15px rgba(0, 0, 0, 0.3);
-letter-spacing: 2px;
-animation: titlePulse 2s ease-in-out infinite;
+font-family: 'Courier New', monospace;
+letter-spacing: 4px;
+text-shadow: 0 2px 8px rgba(255, 105, 180, 0.3);
 }
 
-@keyframes titlePulse {
-0%, 100% { transform: scale(1); }
-50% { transform: scale(1.02); }
+.ac-name {
+white-space: nowrap;
+overflow: hidden;
 }
 
 .bio-content p {
-color: #000;
-background: rgba(255, 255, 255, 0.85);
+color: #FF69B4;
 font-size: 15px;
 line-height: 1.8;
-margin-bottom: 15px;
+margin-bottom: 20px;
 text-align: left;
-padding: 15px 20px;
-border-radius: 20px;
-border: 3px solid #fff;
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1),
-            inset 0 2px 10px rgba(255, 255, 255, 0.5);
-backdrop-filter: blur(5px);
-transition: all 0.3s ease;
+font-family: 'Arial', sans-serif;
+text-shadow: 0 1px 3px rgba(255, 105, 180, 0.3);
+}
+
+.highlight {
+color: #FF1493;
+font-weight: bold;
+text-shadow: 0 2px 4px rgba(255, 20, 147, 0.4);
+}
+
+/* MacBook Style Contact Popup */
+.contact-popup {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.5);
+z-index: 2000;
+display: none;
+justify-content: center;
+align-items: center;
+backdrop-filter: blur(10px);
+}
+
+.contact-popup.active {
+display: flex;
+}
+
+.macbook-window {
+width: 400px;
+background: #f5f5f5;
+border-radius: 12px;
+box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+overflow: hidden;
+animation: popupSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.macbook-titlebar {
+background: #e8e8e8;
+padding: 12px 16px;
+display: flex;
+align-items: center;
+gap: 12px;
+border-bottom: 1px solid #d0d0d0;
+}
+
+.macbook-traffic-lights {
+display: flex;
+gap: 8px;
+}
+
+.traffic-light {
+width: 12px;
+height: 12px;
+border-radius: 50%;
+cursor: pointer;
+transition: all 0.2s ease;
+}
+
+.traffic-light.close {
+background: #ff5f57;
+}
+
+.traffic-light.minimize {
+background: #ffbd2e;
+}
+
+.traffic-light.maximize {
+background: #28ca42;
+}
+
+.traffic-light:hover {
+transform: scale(1.1);
+}
+
+.macbook-title {
+font-size: 14px;
+font-weight: 500;
+color: #333;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.macbook-content {
+padding: 24px;
+background: #fff;
+}
+
+.contact-info {
+display: flex;
+flex-direction: column;
+gap: 16px;
+}
+
+.contact-item {
+display: flex;
+align-items: center;
+gap: 12px;
+padding: 12px;
+background: #f8f9fa;
+border-radius: 8px;
+border-left: 4px solid #FF69B4;
+}
+
+.contact-label {
+font-weight: 600;
+color: #FF69B4;
+font-size: 14px;
+min-width: 80px;
+}
+
+.contact-value {
+color: #333;
+font-size: 14px;
+font-family: 'Courier New', monospace;
+}
+
+@keyframes popupSlideIn {
+0% {
+opacity: 0;
+transform: scale(0.8) translateY(20px);
+}
+100% {
+opacity: 1;
+transform: scale(1) translateY(0);
+}
+}
+
+/* Photoshoot Popup Styles */
+.photoshoot-popup {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.5);
+z-index: 2000;
+display: none;
+justify-content: center;
+align-items: center;
+backdrop-filter: blur(10px);
+}
+
+.photoshoot-popup.active {
+display: flex;
+}
+
+.photoshoot-window {
+width: 66.67vw;
+height: 66.67vh;
+max-width: 1000px;
+max-height: 800px;
+background: #f5f5f5;
+border-radius: 12px;
+box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+overflow: hidden;
+animation: popupSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.photoshoot-content {
+padding: 0;
+height: calc(100% - 45px);
+overflow-y: auto;
+background: #fff;
+}
+
+.photo-gallery {
+display: flex;
+flex-direction: column;
+gap: 12px;
+padding: 15px;
+}
+
+.photo-item {
+border-radius: 8px;
+overflow: hidden;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+transition: transform 0.3s ease;
+}
+
+.photo-item:hover {
+transform: scale(1.01);
+}
+
+.gallery-photo {
+width: 100%;
+height: auto;
+object-fit: contain;
+display: block;
+}
+
+/* Custom scrollbar for photoshoot content */
+.photoshoot-content::-webkit-scrollbar {
+width: 8px;
+}
+
+/* Photo Lightbox */
+.lightbox {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.9);
+z-index: 10000;
+cursor: pointer;
+}
+
+.lightbox.active {
+display: flex;
+}
+
+.lightbox-content {
 position: relative;
+width: 100%;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
-.bio-content p::before {
-content: '★';
+.lightbox-close {
 position: absolute;
-top: -15px;
-left: 20px;
-font-size: 24px;
-color: #ff006e;
-text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+top: 20px;
+right: 30px;
+background: rgba(255, 255, 255, 0.2);
+border: none;
+color: white;
+font-size: 30px;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+cursor: pointer;
+z-index: 10001;
+transition: background 0.3s ease;
 }
 
-.bio-content p:nth-child(even)::before {
-content: '♥';
+.lightbox-close:hover {
+background: rgba(255, 255, 255, 0.3);
 }
 
-.bio-content p:hover {
-transform: translateX(-5px);
-box-shadow: 0 6px 20px rgba(255, 0, 110, 0.3),
-            inset 0 2px 10px rgba(255, 255, 255, 0.7);
-border-color: #ff006e;
+.lightbox-controls {
+position: absolute;
+bottom: 30px;
+left: 50%;
+transform: translateX(-50%);
+display: flex;
+gap: 10px;
+z-index: 10001;
 }
 
-/* Responsive design */
+.zoom-btn {
+background: rgba(255, 255, 255, 0.2);
+border: none;
+color: white;
+font-size: 20px;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+cursor: pointer;
+transition: background 0.3s ease;
+}
+
+.zoom-btn:hover {
+background: rgba(255, 255, 255, 0.3);
+}
+
+.lightbox-image {
+max-width: 90%;
+max-height: 90%;
+object-fit: contain;
+transition: transform 0.3s ease;
+cursor: grab;
+}
+
+.lightbox-image:active {
+cursor: grabbing;
+}
+
+/* Photoshoot close button styling */
+.photoshoot-close {
+background: #ff5f57 !important;
+border: 2px solid #e0443e !important;
+}
+
+.photoshoot-close:hover {
+background: #ff3b30 !important;
+border-color: #d70015 !important;
+transform: scale(1.05);
+}
+
+.photoshoot-close::before {
+content: '×';
+color: white;
+font-size: 12px;
+font-weight: bold;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+height: 100%;
+}
+
+
+.photoshoot-content::-webkit-scrollbar-track {
+background: #f1f1f1;
+}
+
+.photoshoot-content::-webkit-scrollbar-thumb {
+background: #FF69B4;
+border-radius: 4px;
+}
+
+.photoshoot-content::-webkit-scrollbar-thumb:hover {
+background: #FF1493;
+}
+
+/* Y2K iPod style player - NO BORDERS */
+.ipod-player {
+position: fixed;
+top: 10px;
+left: 50%;
+transform: translateX(-50%);
+width: 500px;
+background: linear-gradient(145deg, #d5d5d5, #f5f5f5);
+border-radius: 15px;
+padding: 6px 12px;
+z-index: 1000;
+box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+            inset 0 2px 10px rgba(255, 255, 255, 0.8),
+            inset 0 -2px 10px rgba(0, 0, 0, 0.1);
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.ipod-screen {
+background: linear-gradient(180deg, #4a4a4a, #2a2a2a);
+border-radius: 8px;
+padding: 4px 10px;
+box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+flex: 1;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.track-info {
+min-width: 100px;
+}
+
+.track-title {
+font-size: 10px;
+font-weight: bold;
+color: #fff;
+font-family: 'Arial', sans-serif;
+text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+margin-bottom: 0;
+line-height: 1.2;
+}
+
+.track-artist {
+font-size: 8px;
+color: #b0b0b0;
+font-family: 'Arial', sans-serif;
+line-height: 1;
+}
+
+.progress-container {
+display: flex;
+align-items: center;
+gap: 5px;
+flex: 1;
+}
+
+.time-current,
+.time-total {
+font-size: 8px;
+color: #ccc;
+font-weight: bold;
+min-width: 28px;
+}
+
+.progress-bar-container {
+flex: 1;
+height: 4px;
+background: rgba(0, 0, 0, 0.4);
+border-radius: 10px;
+overflow: hidden;
+box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+cursor: pointer;
+}
+
+.progress-bar {
+height: 100%;
+width: 0%;
+background: linear-gradient(90deg, #888, #ccc);
+border-radius: 10px;
+transition: width 0.1s linear;
+}
+
+.ipod-controls {
+display: flex;
+align-items: center;
+gap: 6px;
+}
+
+.ipod-btn {
+width: 28px;
+height: 28px;
+border-radius: 50%;
+background: linear-gradient(145deg, #e8e8e8, #c8c8c8);
+border: none;
+color: #333;
+font-size: 11px;
+cursor: pointer;
+transition: all 0.2s ease;
+box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2),
+            inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.ipod-btn:hover {
+background: linear-gradient(145deg, #f5f5f5, #d5d5d5);
+transform: translateY(-1px);
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.ipod-btn:active {
+transform: translateY(1px);
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2),
+            inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.play-btn-ipod {
+width: 34px;
+height: 34px;
+font-size: 13px;
+background: linear-gradient(145deg, #888, #666);
+border: none;
+color: #fff;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.play-btn-ipod:hover {
+background: linear-gradient(145deg, #999, #777);
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Simple pink speech bubble */
+.tooltip {
+position: absolute;
+bottom: -60px;
+left: 50%;
+transform: translateX(-50%) scale(0);
+background: #FF69B4;
+color: white;
+padding: 10px 20px;
+border-radius: 25px;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+font-size: 14px;
+font-weight: 500;
+white-space: nowrap;
+pointer-events: none;
+z-index: 1000;
+opacity: 0;
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+box-shadow: 0 2px 10px rgba(255, 105, 180, 0.3);
+}
+
+.item:hover .tooltip {
+opacity: 1;
+transform: translateX(-50%) scale(1);
+bottom: -65px;
+}
+
+.link-button {
+display: none;
+}
+
+
+/* Mobile responsive - keep collage but make it work on mobile */
 @media (max-width: 768px) {
+.container {
+    height: 100vh;
+    overflow: hidden;
+}
+
 .eye {
-width: 90px;
-height: 90px;
+    width: 200px;
+    height: 200px;
+}
+
+.item-7 .eye {
+    width: 300px;
+    height: 300px;
+}
+
+/* Tooltips work on mobile - pink style */
+.tooltip {
+    display: block !important;
+    font-size: 12px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: #FF69B4;
+    color: white;
+    box-shadow: 0 2px 8px rgba(255, 105, 180, 0.3);
+}
+
+/* Adjust positioning for mobile */
+.item-1 { top: 5%; left: 8%; }
+.item-2 { top: 8%; right: 10%; }
+.item-3 { top: 30%; left: 2%; }
+.item-4 { top: 33%; right: 5%; }
+.item-5 { bottom: 8%; left: 12%; }
+.item-6 { bottom: 10%; right: 15%; }
+/* .item-7 positioning is handled by main CSS with !important */
+}
+
+.item-center {
+position: relative;
+transform: none;
+width: 100%;
+z-index: 5;
+margin: 40px 0;
 }
 
 .item-center .eye {
-width: 140px;
-height: 140px;
+width: 85%;
+height: auto;
+max-width: 350px;
+aspect-ratio: 1;
+padding: 0;
+margin: 0 auto;
+border: none;
+background: none;
+box-shadow: none;
+display: block;
 }
 
-.item-1 { top: 12%; left: 8%; }
-.item-2 { top: 12%; right: 8%; }
-.item-3 { top: 48%; left: 3%; }
-.item-4 { top: 48%; right: 3%; }
-.item-5 { bottom: 18%; left: 12%; }
-.item-6 { bottom: 18%; right: 12%; }
+/* Mobile hover effects work normally */
 
+/* Tooltips are now visible on mobile too */
+
+.link-button {
+display: block !important;
+position: relative;
+margin: 8px auto 5px auto;
+background: #fff;
+color: #000;
+padding: 8px 18px;
+border: none;
+border-radius: 0;
+font-size: 11px;
+font-weight: bold;
+text-transform: uppercase;
+letter-spacing: 1.5px;
+box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+z-index: 10;
+pointer-events: auto;
+width: 60%;
+max-width: 180px;
+font-family: 'Courier New', monospace;
+}
+
+.link-button:active {
+background: #000;
+color: #fff;
+transform: translate(2px, 2px);
+box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
 .bio-panel {
-width: 90%;
+width: 85%;
+max-width: 350px;
 right: -100%;
-background: linear-gradient(135deg, #ffd1dc 0%, #ffb3d9 100%);
+background: #fff;
 }
 
 .bio-toggle {
-bottom: 20px;
-right: 20px;
-padding: 12px 24px;
-font-size: 13px;
-letter-spacing: 1px;
+top: 50%;
+right: 0;
+padding: 30px 12px;
+font-size: 12px;
+border-top-left-radius: 15px;
+border-bottom-left-radius: 15px;
+}
+
+.bio-toggle:hover {
+padding: 35px 12px;
 }
 
 .bio-close {
-width: 45px;
-height: 45px;
-font-size: 28px;
+width: 35px;
+height: 35px;
+font-size: 24px;
 top: 15px;
 right: 15px;
 }
 
 .bio-content {
-padding: 70px 25px 30px 25px;
+padding: 70px 20px 30px 20px;
 }
 
 .bio-content h2 {
-font-size: 26px;
-text-shadow: 2px 2px 0px #ff006e, 
-             -1px -1px 0px #00d4ff,
-             3px 3px 10px rgba(0, 0, 0, 0.3);
+font-size: 22px;
+letter-spacing: 2px;
 }
 
 .bio-content p {
-font-size: 13px;
-padding: 12px 15px;
+font-size: 12px;
 line-height: 1.6;
 }
 
-.bio-content p::before {
-font-size: 18px;
-top: -12px;
-left: 15px;
+.ipod-player {
+width: 95%;
+max-width: 360px;
+padding: 3px 6px;
+gap: 5px;
+top: 5px;
+}
+
+.track-title {
+font-size: 8px;
+}
+
+.track-artist {
+font-size: 7px;
+}
+
+.ipod-btn {
+width: 24px;
+height: 24px;
+font-size: 9px;
+}
+
+.play-btn-ipod {
+width: 28px;
+height: 28px;
+font-size: 11px;
+}
+
+.time-current,
+.time-total {
+font-size: 7px;
 }
 }
+
 
 /* Tablet responsive (iPad) */
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -424,28 +982,52 @@ height: 200px;
 }
 
 .item-center .eye {
-width: 300px;
-height: 300px;
+width: 280px;
+height: 280px;
+border: none;
+padding: 0;
+margin: 0;
+background: none;
+box-shadow: none;
 }
 
-.item-1 { top: 12%; left: 15%; }
-.item-2 { top: 12%; right: 15%; }
-.item-3 { top: 48%; left: 8%; }
-.item-4 { top: 48%; right: 8%; }
-.item-5 { bottom: 18%; left: 18%; }
-.item-6 { bottom: 18%; right: 18%; }
+.item-7 .eye {
+width: 350px;
+height: 350px;
+}
+
+.item-1 { top: 10%; left: 10%; transform: rotate(-8deg); }
+.item-2 { top: 12%; right: 12%; transform: rotate(10deg); }
+.item-3 { top: 42%; left: 6%; transform: rotate(5deg); }
+.item-4 { top: 40%; right: 8%; transform: rotate(-8deg); }
+.item-5 { bottom: 15%; left: 15%; transform: rotate(7deg); }
+.item-6 { bottom: 18%; right: 18%; transform: rotate(-5deg); }
+/* .item-7 positioning is handled by main CSS with !important */
 
 .bio-panel {
-width: 450px;
+width: 380px;
 }
 
 .bio-toggle {
-bottom: 25px;
-right: 25px;
+padding: 35px 12px;
+font-size: 13px;
+}
+
+.tooltip {
+font-size: 13px;
+padding: 10px 18px;
+border-radius: 22px;
+background: #FF69B4;
+color: white;
+box-shadow: 0 2px 8px rgba(255, 105, 180, 0.3);
+}
+
+.ipod-player {
+width: 480px;
 }
 }
 
-/* Large desktop */
+/* Large desktop - more creative collage layout */
 @media (min-width: 1600px) {
 .eye {
 width: 380px;
@@ -453,322 +1035,124 @@ height: 380px;
 }
 
 .item-center .eye {
-width: 480px;
-height: 480px;
+width: 420px;
+height: 420px;
+border: none;
+padding: 0;
+margin: 0;
+background: none;
+box-shadow: none;
 }
 
-.item-1 { top: 15%; left: 22%; }
-.item-2 { top: 15%; right: 22%; }
-.item-3 { top: 50%; left: 12%; }
-.item-4 { top: 50%; right: 12%; }
-.item-5 { bottom: 20%; left: 26%; }
-.item-6 { bottom: 20%; right: 26%; }
+.item-1 { 
+top: 8%; 
+left: 15%; 
+transform: rotate(-12deg);
+}
+.item-2 { 
+top: 6%; 
+right: 18%; 
+transform: rotate(15deg);
+}
+.item-3 { 
+top: 32%; 
+left: 8%; 
+transform: rotate(8deg);
+}
+.item-4 { 
+top: 35%; 
+right: 10%; 
+transform: rotate(-14deg);
+}
+.item-5 { 
+bottom: 10%; 
+left: 20%; 
+transform: rotate(10deg);
+}
+.item-6 { 
+bottom: 12%; 
+right: 22%; 
+transform: rotate(-7deg);
+}
 
 .bio-content h2 {
-font-size: 40px;
+font-size: 36px;
 }
 
 .bio-content p {
-font-size: 17px;
-padding: 18px 25px;
+font-size: 16px;
 }
 }
 
-
-/* Y2K iPod style player - Horizontal long, vertically slim */
-.ipod-player {
-    position: fixed;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 500px;
-    background: linear-gradient(145deg, #d5d5d5, #f5f5f5);
-    border-radius: 15px;
-    padding: 6px 12px;
-    z-index: 1000;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
-                inset 0 2px 10px rgba(255, 255, 255, 0.8),
-                inset 0 -2px 10px rgba(0, 0, 0, 0.1);
-    border: 2px solid #a0a0a0;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.ipod-screen {
-    background: linear-gradient(180deg, #4a4a4a, #2a2a2a);
-    border-radius: 8px;
-    padding: 4px 10px;
-    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
-    border: 2px solid #1a1a1a;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.track-info {
-    min-width: 100px;
-}
-
-.track-title {
-    font-size: 10px;
-    font-weight: bold;
-    color: #fff;
-    font-family: 'Arial', sans-serif;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    margin-bottom: 0;
-    line-height: 1.2;
-}
-
-.track-artist {
-    font-size: 8px;
-    color: #b0b0b0;
-    font-family: 'Arial', sans-serif;
-    line-height: 1;
-}
-
-.progress-container {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    flex: 1;
-}
-
-.time-current,
-.time-total {
-    font-size: 8px;
-    color: #ccc;
-    font-weight: bold;
-    min-width: 28px;
-}
-
-.progress-bar-container {
-    flex: 1;
-    height: 4px;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 10px;
+/* Collage Layout - All images scattered like photos on a table */
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
-    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.progress-bar {
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.clickable-items {
+    position: absolute;
+    width: 100%;
     height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #888, #ccc);
-    border-radius: 10px;
-    transition: width 0.1s linear;
+    z-index: 2;
 }
 
-.ipod-controls {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+/* Collage-style positioning - like scattered photos */
+.item-1 {
+    top: 8%;
+    left: 12%;
+    animation-delay: 0s;
+    transform: rotate(-8deg);
 }
 
-.ipod-btn {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: linear-gradient(145deg, #e8e8e8, #c8c8c8);
-    border: 2px solid #a0a0a0;
-    color: #333;
-    font-size: 11px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2),
-                inset 0 1px 2px rgba(255, 255, 255, 0.8);
+.item-2 {
+    top: 10%;
+    right: 15%;
+    animation-delay: 0.5s;
+    transform: rotate(12deg);
 }
 
-.ipod-btn:hover {
-    background: linear-gradient(145deg, #f5f5f5, #d5d5d5);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+.item-3 {
+    top: 35%;
+    left: 5%;
+    animation-delay: 1s;
+    transform: rotate(5deg);
 }
 
-.ipod-btn:active {
-    transform: translateY(1px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2),
-                inset 0 1px 3px rgba(0, 0, 0, 0.2);
+.item-4 {
+    top: 38%;
+    right: 8%;
+    animation-delay: 1.5s;
+    transform: rotate(-10deg);
 }
 
-.play-btn-ipod {
-    width: 34px;
-    height: 34px;
-    font-size: 13px;
-    background: linear-gradient(145deg, #888, #666);
-    border: 2px solid #555;
-    color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+.item-5 {
+    bottom: 12%;
+    left: 18%;
+    animation-delay: 2s;
+    transform: rotate(7deg);
 }
 
-.play-btn-ipod:hover {
-    background: linear-gradient(145deg, #999, #777);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+.item-6 {
+    bottom: 15%;
+    right: 20%;
+    animation-delay: 2.5s;
+    transform: rotate(-5deg);
 }
 
-.volume-control {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    min-width: 100px;
-}
-
-.volume-icon {
-    font-size: 12px;
-}
-
-.volume-slider {
-    flex: 1;
-    height: 4px;
-    -webkit-appearance: none;
-    appearance: none;
-    background: linear-gradient(90deg, #666, #aaa);
-    border-radius: 10px;
-    outline: none;
-    cursor: pointer;
-    border: 1px solid #555;
-}
-
-.volume-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    background: linear-gradient(145deg, #e0e0e0, #999);
-    cursor: pointer;
-    border: 2px solid #666;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.volume-slider::-moz-range-thumb {
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    background: linear-gradient(145deg, #e0e0e0, #999);
-    cursor: pointer;
-    border: 2px solid #666;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .ipod-player {
-        width: 95%;
-        max-width: 380px;
-        padding: 4px 8px;
-        gap: 6px;
-        top: 8px;
-    }
-    
-    .track-title {
-        font-size: 8px;
-    }
-    
-    .track-artist {
-        font-size: 7px;
-    }
-    
-    .ipod-btn {
-        width: 24px;
-        height: 24px;
-        font-size: 9px;
-    }
-    
-    .play-btn-ipod {
-        width: 28px;
-        height: 28px;
-        font-size: 11px;
-    }
-    
-    .volume-control {
-        display: none;
-    }
-    
-    .time-current,
-    .time-total {
-        font-size: 7px;
-    }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-    .ipod-player {
-        width: 480px;
-    }
-}
-
-/* Old iPhone style speech bubble */
-.tooltip {
-    position: absolute;
-    bottom: -50px;
-    left: 50%;
-    transform: translateX(-50%) scale(0);
-    background: linear-gradient(180deg, #e8e8e8 0%, #c8c8c8 100%);
-    color: #000;
-    padding: 8px 14px;
-    border-radius: 18px;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    white-space: nowrap;
-    pointer-events: none;
-    z-index: 1000;
-    opacity: 0;
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
-}
-
-.tooltip::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid #e8e8e8;
-    filter: drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.1));
-}
-
-.item:hover .tooltip {
-    opacity: 1;
-    transform: translateX(-50%) scale(1);
-    bottom: -55px;
-}
-
-/* Responsive tooltip */
-@media (max-width: 768px) {
-    .tooltip {
-        font-size: 10px;
-        padding: 5px 10px;
-        bottom: -40px;
-    }
-    
-    .item:hover .tooltip {
-        bottom: -45px;
-    }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-    .tooltip {
-        font-size: 12px;
-        padding: 7px 12px;
-    }
-    
-    .bio-panel {
-        width: 450px;
-    }
-    
-    .bio-toggle {
-        bottom: 25px;
-        right: 25px;
-        font-size: 15px;
-    }
-}
+/* .item-7 positioning is handled above with !important */

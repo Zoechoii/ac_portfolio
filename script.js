@@ -16,15 +16,27 @@ items.forEach(item => {
         // Only trigger if clicking on the eye itself
         if (e.target.closest('.eye')) {
             const url = this.getAttribute('data-url');
-            // Animation effect
-            const eye = this.querySelector('.eye');
-            eye.style.transform = 'scale(0.8)';
             
-            setTimeout(() => {
-                eye.style.transform = '';
-                // Open URL in new window
+            // Check if it's the contact button
+            if (this.id === 'contactBtn') {
+                // Handle contact popup instead of opening URL
+                const contactPopup = document.getElementById('contactPopup');
+                contactPopup.classList.add('active');
+                return;
+            }
+            
+            // Check if it's the photoshoot button
+            if (this.id === 'photoshootBtn') {
+                // Handle photoshoot popup instead of opening URL
+                const photoshootPopup = document.getElementById('photoshootPopup');
+                photoshootPopup.classList.add('active');
+                return;
+            }
+            
+            // Only open URL if data-url exists
+            if (url) {
                 window.open(url, '_blank');
-            }, 200);
+            }
         }
     });
 
@@ -93,19 +105,6 @@ nextBtn.addEventListener('click', function() {
     audio.currentTime = audio.duration;
 });
 
-// Random sparkle effect
-function addSparkle() {
-    const randomItem = items[Math.floor(Math.random() * items.length)];
-    const eye = randomItem.querySelector('.eye');
-    eye.style.filter = 'brightness(1.5) drop-shadow(0 0 30px rgba(255, 0, 110, 1))';
-    setTimeout(() => {
-        eye.style.filter = '';
-    }, 500);
-}
-
-// Random item sparkle every 3 seconds
-setInterval(addSparkle, 3000);
-
 // Fade-in effect on page load
 window.addEventListener('load', function() {
     items.forEach((item, index) => {
@@ -133,5 +132,148 @@ bioClose.addEventListener('click', function() {
 bioPanel.addEventListener('click', function(e) {
     if (e.target === bioPanel) {
         bioPanel.classList.remove('active');
+    }
+});
+
+// Contact popup functionality
+const contactBtn = document.getElementById('contactBtn');
+const contactPopup = document.getElementById('contactPopup');
+const closeBtn = document.querySelector('.traffic-light.close');
+
+contactBtn.addEventListener('click', function() {
+    contactPopup.classList.add('active');
+});
+
+closeBtn.addEventListener('click', function() {
+    contactPopup.classList.remove('active');
+});
+
+// Close contact popup when clicking outside
+contactPopup.addEventListener('click', function(e) {
+    if (e.target === contactPopup) {
+        contactPopup.classList.remove('active');
+    }
+});
+
+// Photoshoot popup functionality
+const photoshootBtn = document.getElementById('photoshootBtn');
+const photoshootPopup = document.getElementById('photoshootPopup');
+const closePhotoshootBtn = document.querySelector('.traffic-light.close-photoshoot');
+
+photoshootBtn.addEventListener('click', function() {
+    photoshootPopup.classList.add('active');
+});
+
+closePhotoshootBtn.addEventListener('click', function() {
+    photoshootPopup.classList.remove('active');
+});
+
+// Close photoshoot popup when clicking outside
+photoshootPopup.addEventListener('click', function(e) {
+    if (e.target === photoshootPopup) {
+        photoshootPopup.classList.remove('active');
+    }
+});
+
+// Photo Lightbox functionality
+let currentZoom = 1;
+let currentPhotoIndex = 0;
+let allPhotos = [];
+const lightbox = document.getElementById('lightbox');
+const lightboxImage = document.getElementById('lightboxImage');
+const lightboxClose = document.getElementById('lightboxClose');
+const zoomIn = document.getElementById('zoomIn');
+const zoomOut = document.getElementById('zoomOut');
+const prevPhoto = document.getElementById('prevPhoto');
+const nextPhoto = document.getElementById('nextPhoto');
+
+// Add click event to all gallery photos
+document.addEventListener('DOMContentLoaded', function() {
+    const galleryPhotos = document.querySelectorAll('.gallery-photo');
+    
+    // Store all photos for navigation
+    allPhotos = Array.from(galleryPhotos);
+    
+    galleryPhotos.forEach((photo, index) => {
+        photo.addEventListener('click', function(e) {
+            e.stopPropagation();
+            currentPhotoIndex = index;
+            const src = this.src;
+            lightboxImage.src = src;
+            lightbox.classList.add('active');
+            currentZoom = 1;
+            lightboxImage.style.transform = 'scale(1)';
+        });
+    });
+});
+
+// Close lightbox
+lightboxClose.addEventListener('click', function(e) {
+    e.stopPropagation();
+    lightbox.classList.remove('active');
+});
+
+// Close lightbox when clicking outside image
+lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+    }
+});
+
+// Zoom controls
+zoomIn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    currentZoom = Math.min(currentZoom * 1.2, 5);
+    lightboxImage.style.transform = `scale(${currentZoom})`;
+});
+
+zoomOut.addEventListener('click', function(e) {
+    e.stopPropagation();
+    currentZoom = Math.max(currentZoom / 1.2, 0.1);
+    lightboxImage.style.transform = `scale(${currentZoom})`;
+});
+
+// Previous photo functionality
+prevPhoto.addEventListener('click', function(e) {
+    e.stopPropagation();
+    currentPhotoIndex = (currentPhotoIndex - 1 + allPhotos.length) % allPhotos.length;
+    const prevPhotoSrc = allPhotos[currentPhotoIndex].src;
+    lightboxImage.src = prevPhotoSrc;
+    currentZoom = 1;
+    lightboxImage.style.transform = 'scale(1)';
+});
+
+// Next photo functionality
+nextPhoto.addEventListener('click', function(e) {
+    e.stopPropagation();
+    currentPhotoIndex = (currentPhotoIndex + 1) % allPhotos.length;
+    const nextPhotoSrc = allPhotos[currentPhotoIndex].src;
+    lightboxImage.src = nextPhotoSrc;
+    currentZoom = 1;
+    lightboxImage.style.transform = 'scale(1)';
+});
+
+// Keyboard controls
+document.addEventListener('keydown', function(e) {
+    if (lightbox.classList.contains('active')) {
+        switch(e.key) {
+            case 'Escape':
+                lightbox.classList.remove('active');
+                break;
+            case '+':
+            case '=':
+                zoomIn.click();
+                break;
+            case '-':
+                zoomOut.click();
+                break;
+            case 'ArrowLeft':
+                prevPhoto.click();
+                break;
+            case 'ArrowRight':
+            case ' ':
+                nextPhoto.click();
+                break;
+        }
     }
 });
