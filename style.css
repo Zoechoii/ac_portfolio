@@ -812,13 +812,13 @@ display: none;
 }
 
 .eye {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
 }
 
 .item-7 .eye {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
 }
 
 /* Tooltips work on mobile - pink style */
@@ -832,13 +832,13 @@ display: none;
     box-shadow: 0 2px 8px rgba(255, 105, 180, 0.3);
 }
 
-/* Adjust positioning for mobile */
-.item-1 { top: 5%; left: 8%; }
-.item-2 { top: 8%; right: 10%; }
-.item-3 { top: 30%; left: 2%; }
-.item-4 { top: 33%; right: 5%; }
-.item-5 { bottom: 8%; left: 12%; }
-.item-6 { bottom: 10%; right: 15%; }
+/* Adjust positioning for mobile - better spacing for touch */
+.item-1 { top: 8%; left: 5%; }
+.item-2 { top: 8%; right: 5%; }
+.item-3 { top: 35%; left: 3%; }
+.item-4 { top: 35%; right: 3%; }
+.item-5 { bottom: 15%; left: 8%; }
+.item-6 { bottom: 15%; right: 8%; }
 /* .item-7 positioning is handled by main CSS with !important */
 }
 

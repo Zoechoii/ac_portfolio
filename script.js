@@ -5,7 +5,7 @@ bgImage.addEventListener('load', function() {
 });
 bgImage.addEventListener('error', function() {
     console.error('Failed to load background image');
-    alert('Cannot load background image. Please check the background.jpg file.');
+    alert('Cannot load background image. Please check the background.JPG file.');
 });
 
 // Clickable items
