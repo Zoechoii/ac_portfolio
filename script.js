@@ -187,8 +187,15 @@ bioClose.addEventListener('click', function() {
     bioPanel.classList.remove('active');
 });
 
-// Close bio panel when clicking outside
+// Close bio panel when clicking/touching outside
 bioPanel.addEventListener('click', function(e) {
+    if (e.target === bioPanel) {
+        bioPanel.classList.remove('active');
+    }
+});
+
+// Also handle touch events for mobile
+bioPanel.addEventListener('touchstart', function(e) {
     if (e.target === bioPanel) {
         bioPanel.classList.remove('active');
     }
