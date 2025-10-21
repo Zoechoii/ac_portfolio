@@ -874,6 +874,17 @@ display: none;
     background: #FF69B4;
     color: white;
     box-shadow: 0 2px 8px rgba(255, 105, 180, 0.3);
+    /* Always visible on mobile */
+    opacity: 1 !important;
+    transform: translateX(-50%) scale(1) !important;
+    bottom: -65px !important;
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+    pointer-events: none;
+    z-index: 1000;
+    white-space: nowrap;
 }
 
 /* Adjust positioning for mobile - better spacing for touch */
