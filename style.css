@@ -220,8 +220,6 @@ background: #FF69B4;
 color: #fff;
 border: 2px solid #fff;
 border-radius: 0;
-border-top-left-radius: 25px;
-border-bottom-left-radius: 25px;
 font-size: 14px;
 font-weight: bold;
 cursor: pointer;
@@ -902,6 +900,9 @@ width: 85%;
 max-width: 350px;
 right: -100%;
 background: #fff;
+height: 100vh;
+overflow-y: auto;
+padding-bottom: 50px; /* Add extra padding at bottom for better scrolling */
 }
 
 .bio-toggle {
@@ -909,8 +910,7 @@ top: 50%;
 right: 0;
 padding: 30px 12px;
 font-size: 12px;
-border-top-left-radius: 15px;
-border-bottom-left-radius: 15px;
+border-radius: 0; /* Keep it square on mobile too */
 }
 
 .bio-toggle:hover {
@@ -926,7 +926,7 @@ right: 15px;
 }
 
 .bio-content {
-padding: 70px 20px 30px 20px;
+padding: 70px 20px 80px 20px; /* Increased bottom padding for better scrolling */
 }
 
 .bio-content h2 {
