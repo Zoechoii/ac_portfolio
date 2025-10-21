@@ -75,6 +75,20 @@ playBtnIpod.addEventListener('click', function() {
     }
 });
 
+// Mobile touch event for Play/Pause button
+playBtnIpod.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    if (isPlaying) {
+        audio.pause();
+        playBtnIpod.textContent = '▶';
+        isPlaying = false;
+    } else {
+        audio.play();
+        playBtnIpod.textContent = '⏸';
+        isPlaying = true;
+    }
+});
+
 // Update progress bar
 audio.addEventListener('timeupdate', function() {
     const progress = (audio.currentTime / audio.duration) * 100;
@@ -99,6 +113,17 @@ prevBtn.addEventListener('click', function() {
 });
 
 nextBtn.addEventListener('click', function() {
+    audio.currentTime = audio.duration;
+});
+
+// Mobile touch events for Previous/Next buttons
+prevBtn.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    audio.currentTime = 0;
+});
+
+nextBtn.addEventListener('touchstart', function(e) {
+    e.preventDefault();
     audio.currentTime = audio.duration;
 });
 
