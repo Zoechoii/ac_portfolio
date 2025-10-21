@@ -229,6 +229,8 @@ transform: rotate(-5deg);
     z-index: 10;
 }
 
+/* Remove hover effects for center photo on mobile */
+@media (min-width: 769px) {
 .item-7:hover {
 transform: translate(-50%, -50%) rotate(-3deg) scale(1.1) !important;
 transition: all 0.3s ease;
@@ -236,6 +238,18 @@ transition: all 0.3s ease;
 
 .item-7:hover .eye {
 transform: scale(1.2) rotate(10deg);
+}
+}
+
+/* Mobile: No hover effects for center photo */
+@media (max-width: 768px) {
+.item-7:hover {
+transform: translate(-50%, -50%) rotate(-3deg) !important;
+}
+
+.item-7:hover .eye {
+transform: none;
+}
 }
 
 .item-7 .eye {
@@ -856,13 +870,65 @@ display: none;
 }
 
 .eye {
-    width: 200px; /* Increased from 150px */
-    height: 200px; /* Increased from 150px */
+    width: 120px; /* Much smaller for better spacing */
+    height: 120px; /* Much smaller for better spacing */
 }
 
 .item-7 .eye {
-    width: 300px; /* Increased from 250px */
-    height: 300px; /* Increased from 250px */
+    width: 250px; /* Larger center photo */
+    height: 250px; /* Larger center photo */
+}
+
+/* Mobile: Separate small touch button for center photo */
+@media (max-width: 768px) {
+.item-7 {
+    /* Keep original positioning */
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) rotate(-3deg) !important;
+    z-index: 10;
+    /* Disable touch on the entire item */
+    pointer-events: none;
+}
+
+.item-7 .eye {
+    width: 250px; /* Keep photo size large */
+    height: 250px; /* Keep photo size large */
+    pointer-events: none; /* Disable touch on photo itself */
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+}
+
+.item-7 .eye img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+}
+
+/* Small touch button - separate from photo */
+.mobile-touch-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px; /* Small touch area */
+    height: 30px; /* Small touch area */
+    background: transparent; /* Invisible */
+    border: none;
+    cursor: pointer;
+    z-index: 15; /* Above everything */
+    pointer-events: auto; /* Enable touch */
+    /* Optional: Add subtle visual indicator */
+    /* background: rgba(255, 105, 180, 0.1); */
+    border-radius: 50%;
+}
 }
 
 /* Tooltips work on mobile - pink style */
@@ -887,13 +953,43 @@ display: none;
     white-space: nowrap;
 }
 
-/* Adjust positioning for mobile - dramatically spread out to avoid overlap */
-.item-1 { top: 1%; left: 0%; } /* Dramatically spread out */
-.item-2 { top: 1%; right: 0%; } /* Dramatically spread out */
-.item-3 { top: 15%; left: 0%; } /* Dramatically spread out */
-.item-4 { top: 15%; right: 0%; } /* Dramatically spread out */
-.item-5 { bottom: 35%; left: 0%; } /* Dramatically spread out */
-.item-6 { bottom: 35%; right: 0%; } /* Dramatically spread out */
+/* Adjust positioning for mobile - extremely spread out with smaller photos */
+.item-1 { 
+    top: 0%; 
+    left: -10%; 
+    width: 120px; /* Explicit touch area */
+    height: 120px; /* Explicit touch area */
+} /* Extremely spread out, can go outside */
+.item-2 { 
+    top: 0%; 
+    right: -10%; 
+    width: 120px; /* Explicit touch area */
+    height: 120px; /* Explicit touch area */
+} /* Extremely spread out, can go outside */
+.item-3 { 
+    top: 8%; 
+    left: -15%; 
+    width: 120px; /* Explicit touch area */
+    height: 120px; /* Explicit touch area */
+} /* Extremely spread out, can go outside */
+.item-4 { 
+    top: 8%; 
+    right: -15%; 
+    width: 120px; /* Explicit touch area */
+    height: 120px; /* Explicit touch area */
+} /* Extremely spread out, can go outside */
+.item-5 { 
+    bottom: 45%; 
+    left: -10%; 
+    width: 120px; /* Explicit touch area */
+    height: 120px; /* Explicit touch area */
+} /* Extremely spread out, can go outside */
+.item-6 { 
+    bottom: 45%; 
+    right: -10%; 
+    width: 120px; /* Explicit touch area */
+    height: 120px; /* Explicit touch area */
+} /* Extremely spread out, can go outside */
 /* .item-7 positioning is handled by main CSS with !important */
 }
 

@@ -11,32 +11,29 @@ bgImage.addEventListener('error', function() {
 // Clickable items
 const items = document.querySelectorAll('.item');
 items.forEach(item => {
-    // Click event
+    // Click event - work on both desktop and mobile
     item.addEventListener('click', function(e) {
-        // Only trigger if clicking on the eye itself
-        if (e.target.closest('.eye')) {
-            const url = this.getAttribute('data-url');
-            
-            // Check if it's the contact button
-            if (this.id === 'contactBtn') {
-                // Handle contact popup instead of opening URL
-                const contactPopup = document.getElementById('contactPopup');
-                contactPopup.classList.add('active');
-                return;
-            }
-            
-            // Check if it's the photoshoot button
-            if (this.id === 'photoshootBtn') {
-                // Handle photoshoot popup instead of opening URL
-                const photoshootPopup = document.getElementById('photoshootPopup');
-                photoshootPopup.classList.add('active');
-                return;
-            }
-            
-            // Only open URL if data-url exists
-            if (url) {
-                window.open(url, '_blank');
-            }
+        const url = this.getAttribute('data-url');
+        
+        // Check if it's the contact button
+        if (this.id === 'contactBtn') {
+            // Handle contact popup instead of opening URL
+            const contactPopup = document.getElementById('contactPopup');
+            contactPopup.classList.add('active');
+            return;
+        }
+        
+        // Check if it's the photoshoot button
+        if (this.id === 'photoshootBtn') {
+            // Handle photoshoot popup instead of opening URL
+            const photoshootPopup = document.getElementById('photoshootPopup');
+            photoshootPopup.classList.add('active');
+            return;
+        }
+        
+        // Only open URL if data-url exists
+        if (url) {
+            window.open(url, '_blank');
         }
     });
 
@@ -140,6 +137,16 @@ if (totalImages === 0) {
     setTimeout(() => {
         preloader.classList.add('hidden');
     }, 1000);
+}
+
+// Mobile touch button for SoundCloud
+const soundcloudButton = document.getElementById('soundcloudButton');
+if (soundcloudButton) {
+    soundcloudButton.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const url = 'https://soundcloud.com/user-523526653?ref=clipboard&p=i&c=1&si=550751A6631542E6B8CBCED96134C8C1&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing';
+        window.open(url, '_blank');
+    });
 }
 
 // Bio panel toggle
