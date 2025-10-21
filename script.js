@@ -105,15 +105,45 @@ nextBtn.addEventListener('click', function() {
     audio.currentTime = audio.duration;
 });
 
-// Fade-in effect on page load
-window.addEventListener('load', function() {
-    items.forEach((item, index) => {
-        item.style.opacity = '0';
+// Image preloading and fade-in effect
+let imagesLoaded = 0;
+const totalImages = document.querySelectorAll('img').length;
+const preloader = document.getElementById('preloader');
+
+// Function to check if all images are loaded
+function checkAllImagesLoaded() {
+    imagesLoaded++;
+    if (imagesLoaded === totalImages) {
+        // All images loaded, hide preloader and show content
         setTimeout(() => {
-            item.style.opacity = '1';
-        }, index * 200);
-    });
+            preloader.classList.add('hidden');
+            // Start fade-in animation for items
+            items.forEach((item, index) => {
+                item.style.opacity = '0';
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                }, index * 200);
+            });
+        }, 500); // Small delay for smooth transition
+    }
+}
+
+// Add load event listeners to all images
+document.querySelectorAll('img').forEach(img => {
+    if (img.complete) {
+        checkAllImagesLoaded();
+    } else {
+        img.addEventListener('load', checkAllImagesLoaded);
+        img.addEventListener('error', checkAllImagesLoaded); // Count errors as "loaded"
+    }
 });
+
+// Fallback: if no images or all images fail to load
+if (totalImages === 0) {
+    setTimeout(() => {
+        preloader.classList.add('hidden');
+    }, 1000);
+}
 
 // Bio panel toggle
 const bioToggle = document.getElementById('bioToggle');
