@@ -887,13 +887,13 @@ display: none;
     white-space: nowrap;
 }
 
-/* Adjust positioning for mobile - much more spread out to avoid overlap */
-.item-1 { top: 2%; left: 0%; } /* Much more spread out */
-.item-2 { top: 2%; right: 0%; } /* Much more spread out */
-.item-3 { top: 20%; left: 0%; } /* Much more spread out */
-.item-4 { top: 20%; right: 0%; } /* Much more spread out */
-.item-5 { bottom: 30%; left: 0%; } /* Much more spread out */
-.item-6 { bottom: 30%; right: 0%; } /* Much more spread out */
+/* Adjust positioning for mobile - dramatically spread out to avoid overlap */
+.item-1 { top: 1%; left: 0%; } /* Dramatically spread out */
+.item-2 { top: 1%; right: 0%; } /* Dramatically spread out */
+.item-3 { top: 15%; left: 0%; } /* Dramatically spread out */
+.item-4 { top: 15%; right: 0%; } /* Dramatically spread out */
+.item-5 { bottom: 35%; left: 0%; } /* Dramatically spread out */
+.item-6 { bottom: 35%; right: 0%; } /* Dramatically spread out */
 /* .item-7 positioning is handled by main CSS with !important */
 }
 
