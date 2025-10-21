@@ -117,12 +117,9 @@ function checkAllImagesLoaded() {
         // All images loaded, hide preloader and show content
         setTimeout(() => {
             preloader.classList.add('hidden');
-            // Start fade-in animation for items
-            items.forEach((item, index) => {
-                item.style.opacity = '0';
-                setTimeout(() => {
-                    item.style.opacity = '1';
-                }, index * 200);
+            // Show all items at once - no sequential animation
+            items.forEach((item) => {
+                item.style.opacity = '1';
             });
         }, 500); // Small delay for smooth transition
     }
