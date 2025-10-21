@@ -314,7 +314,7 @@ text-shadow: 0 2px 8px rgba(255, 105, 180, 0.3);
 
 .ac-name {
 white-space: nowrap;
-overflow: hidden;
+overflow: visible;
 }
 
 .bio-content p {
