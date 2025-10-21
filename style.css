@@ -887,13 +887,13 @@ display: none;
     white-space: nowrap;
 }
 
-/* Adjust positioning for mobile - better spacing for touch */
-.item-1 { top: 3%; left: 1%; } /* Even more spread out */
-.item-2 { top: 3%; right: 1%; } /* Even more spread out */
-.item-3 { top: 25%; left: 0%; } /* Even more spread out */
-.item-4 { top: 25%; right: 0%; } /* Even more spread out */
-.item-5 { bottom: 25%; left: 3%; } /* Even more spread out */
-.item-6 { bottom: 25%; right: 3%; } /* Even more spread out */
+/* Adjust positioning for mobile - much more spread out to avoid overlap */
+.item-1 { top: 2%; left: 0%; } /* Much more spread out */
+.item-2 { top: 2%; right: 0%; } /* Much more spread out */
+.item-3 { top: 20%; left: 0%; } /* Much more spread out */
+.item-4 { top: 20%; right: 0%; } /* Much more spread out */
+.item-5 { bottom: 30%; left: 0%; } /* Much more spread out */
+.item-6 { bottom: 30%; right: 0%; } /* Much more spread out */
 /* .item-7 positioning is handled by main CSS with !important */
 }
 
