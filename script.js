@@ -31,6 +31,14 @@ items.forEach(item => {
             return;
         }
         
+        // Check if it's the performances button
+        if (this.id === 'performancesBtn') {
+            // Handle performances popup instead of opening URL
+            const performancesPopup = document.getElementById('performancesPopup');
+            performancesPopup.classList.add('active');
+            return;
+        }
+        
         // Only open URL if data-url exists
         if (url) {
             window.open(url, '_blank');
@@ -220,6 +228,100 @@ contactPopup.addEventListener('click', function(e) {
         contactPopup.classList.remove('active');
     }
 });
+
+// Performances popup functionality
+const performancesBtn = document.getElementById('performancesBtn');
+const performancesPopup = document.getElementById('performancesPopup');
+const closePerformancesBtn = document.querySelector('.traffic-light.close-performances');
+
+performancesBtn.addEventListener('click', function() {
+    performancesPopup.classList.add('active');
+});
+
+closePerformancesBtn.addEventListener('click', function() {
+    performancesPopup.classList.remove('active');
+});
+
+// Close performances popup when clicking outside
+performancesPopup.addEventListener('click', function(e) {
+    if (e.target === performancesPopup) {
+        performancesPopup.classList.remove('active');
+    }
+});
+
+// Video navigation functionality
+let currentVideoIndex = 0;
+const videoItems = document.querySelectorAll('.video-item');
+const totalVideos = videoItems.length;
+const videoPrevBtn = document.querySelector('.prev-video');
+const videoNextBtn = document.querySelector('.next-video');
+const videoCounter = document.querySelector('.video-counter');
+
+function showVideo(index) {
+    // Hide all videos
+    videoItems.forEach(item => {
+        item.classList.remove('active');
+        const video = item.querySelector('video');
+        video.pause();
+    });
+    
+    // Show current video
+    videoItems[index].classList.add('active');
+    currentVideoIndex = index;
+    
+    // Update counter
+    videoCounter.textContent = `${index + 1} / ${totalVideos}`;
+}
+
+function nextVideo() {
+    const nextIndex = (currentVideoIndex + 1) % totalVideos;
+    showVideo(nextIndex);
+}
+
+function prevVideo() {
+    const prevIndex = (currentVideoIndex - 1 + totalVideos) % totalVideos;
+    showVideo(prevIndex);
+}
+
+// Event listeners for navigation buttons
+if (videoPrevBtn) {
+    videoPrevBtn.addEventListener('click', prevVideo);
+}
+
+if (videoNextBtn) {
+    videoNextBtn.addEventListener('click', nextVideo);
+}
+
+// Touch events for mobile swiping
+let videoTouchStartX = 0;
+let videoTouchEndX = 0;
+const videoGallery = document.querySelector('.video-gallery');
+
+if (videoGallery) {
+    videoGallery.addEventListener('touchstart', function(e) {
+        videoTouchStartX = e.changedTouches[0].screenX;
+    });
+
+    videoGallery.addEventListener('touchend', function(e) {
+        videoTouchEndX = e.changedTouches[0].screenX;
+        handleVideoSwipe();
+    });
+
+    function handleVideoSwipe() {
+        const swipeThreshold = 50;
+        const swipeDistance = videoTouchEndX - videoTouchStartX;
+
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+            if (swipeDistance > 0) {
+                // Swipe right - previous video
+                prevVideo();
+            } else {
+                // Swipe left - next video
+                nextVideo();
+            }
+        }
+    }
+}
 
 // Photoshoot popup functionality
 const photoshootBtn = document.getElementById('photoshootBtn');
