@@ -1511,6 +1511,7 @@ font-size: 16px;
     border-radius: 6px;
 }
 
+
 .video-title {
     position: absolute;
     bottom: 20px;
@@ -1573,23 +1574,24 @@ font-size: 16px;
 /* Mobile Performances */
 @media (max-width: 768px) {
     .performances-window {
-        width: 95vw;
-        height: 85vh;
+        width: 98vw;
+        height: 90vh;
         max-width: none;
         max-height: none;
     }
     
     .performances-content {
-        padding: 15px;
+        padding: 5px;
     }
     
     .video-gallery {
-        height: 50vh;
+        height: 70vh;
     }
     
     .video-controls {
-        margin-top: 15px;
+        margin-top: 10px;
         gap: 15px;
+        padding: 5px;
     }
     
     .video-nav-btn {
@@ -1601,4 +1603,5 @@ font-size: 16px;
         font-size: 12px;
         padding: 6px 12px;
     }
+    
 }

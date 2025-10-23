@@ -239,12 +239,22 @@ performancesBtn.addEventListener('click', function() {
 });
 
 closePerformancesBtn.addEventListener('click', function() {
+    // Pause all videos when closing
+    const allVideos = document.querySelectorAll('.performance-video');
+    allVideos.forEach(video => {
+        video.pause();
+    });
     performancesPopup.classList.remove('active');
 });
 
 // Close performances popup when clicking outside
 performancesPopup.addEventListener('click', function(e) {
     if (e.target === performancesPopup) {
+        // Pause all videos when closing
+        const allVideos = document.querySelectorAll('.performance-video');
+        allVideos.forEach(video => {
+            video.pause();
+        });
         performancesPopup.classList.remove('active');
     }
 });
