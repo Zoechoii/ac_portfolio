@@ -182,6 +182,24 @@ if (soundcloudButton) {
     });
 }
 
+// Make tooltips clickable on mobile
+const tooltips = document.querySelectorAll('.tooltip');
+tooltips.forEach(tooltip => {
+    tooltip.addEventListener('click', function(e) {
+        // Only on mobile/touch devices
+        if (window.innerWidth <= 768) {
+            const parentItem = this.closest('.item');
+            const url = parentItem.getAttribute('data-url');
+            
+            if (url) {
+                e.preventDefault();
+                e.stopPropagation();
+                window.open(url, '_blank');
+            }
+        }
+    });
+});
+
 // Bio panel toggle
 const bioToggle = document.getElementById('bioToggle');
 const bioPanel = document.getElementById('bioPanel');

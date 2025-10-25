@@ -1027,11 +1027,8 @@ display: none;
     opacity: 1 !important;
     transform: translateX(-50%) scale(1) !important;
     bottom: -65px !important;
-    position: absolute;
-    bottom: -60px;
-    left: 50%;
-    transform: translateX(-50%) scale(1);
-    pointer-events: none;
+    pointer-events: auto; /* Make clickable on mobile */
+    cursor: pointer;
     z-index: 1000;
     white-space: nowrap;
 }
