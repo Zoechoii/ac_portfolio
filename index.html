@@ -518,6 +518,10 @@ footer{padding-block:120px 32px;display:flex;justify-content:space-between;gap:1
   }
   window.addEventListener('scroll', current, {passive:true});
   window.addEventListener('resize', current); current();
+  /* the pill is sized from the label, so re-measure once the font has loaded and whenever the bar changes size */
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(current);
+  if('ResizeObserver' in window) new ResizeObserver(function(){ current(); }).observe(menu.querySelector('.items'));
+  setTimeout(current, 400); setTimeout(current, 1500);
 
   /* press deck: one article at a time; the arrows always move one card in their own direction */
   var deck = $('#deck'), N = deck.children.length, pi = 0, lockP = false;
