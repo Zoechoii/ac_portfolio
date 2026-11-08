@@ -85,6 +85,8 @@ header{display:flex;justify-content:space-between;align-items:center;gap:10px 16
   .menu-fix{top:calc(12px + env(safe-area-inset-top,0px));left:50%;right:auto;transform:translateX(-50%);padding:4px;width:max-content;max-width:calc(100% - 24px);justify-content:center;overflow-x:auto}
   .icons .ico{width:40px;height:40px}
   .icons .ico svg{width:16px;height:16px}
+  .icons .ico.tear{padding:0 12px 0 10px;gap:5px;font-size:11px}
+  .icons .ico.tear svg{width:14px;height:14px}
   .icons .ra{font-size:11px}
   .icons{gap:6px}
   .menu-fix .items{flex:none;margin:0 auto}
@@ -142,7 +144,8 @@ header{display:flex;justify-content:space-between;align-items:center;gap:10px 16
 .row .tt{display:flex;flex-direction:column;line-height:1.25;min-width:0}
 .row .tt b{font-size:14px;font-weight:700}
 .row p{grid-column:2 / -1;margin:2px 0 0;font-size:12px;line-height:1.55;color:var(--mute)}
-.row .seek{grid-column:2 / -1}
+.row .seek{grid-column:2 / -1;display:none}
+.row.here .seek{display:block}
 .seek{display:block;position:relative;height:4px;border-radius:4px;background:rgba(255,255,255,.22);margin-top:8px;cursor:pointer}
 .seek i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:4px;background:var(--fg)}
 .press{grid-column:1 / -1;margin-top:36px}
@@ -222,7 +225,10 @@ section{padding-top:120px}
 .mail .row{display:flex;gap:8px;flex-wrap:wrap}
 .contact{display:flex;flex-direction:column;gap:10px;align-items:flex-end}
 .icons{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;padding-top:4px}
+.icons .brk{flex-basis:100%;height:0}
 .ico{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#fff;transition:background .2s,transform .2s}
+.ico.tear{width:auto;padding:0 16px 0 13px;border-radius:999px;grid-auto-flow:column;gap:7px;font-size:12px;font-weight:700;letter-spacing:-.01em}
+.ico.tear svg{width:18px;height:18px}
 .ico:hover{transform:translateY(-2px)}
 .ico.sm{width:36px;height:36px}
 .ra{font-weight:800;font-size:15px;letter-spacing:-.02em}
@@ -301,34 +307,37 @@ footer{padding-block:120px 32px;display:flex;justify-content:space-between;gap:1
             </span>
           </div>
           <ol class="rows">
-          <li class="row">
+          <li class="row" data-src="assets/no-regret.mp3" data-key="no-regret" data-title="No Regret">
             <span class="n mute">01</span>
             <span class="tt"><b>No Regret</b><span class="mute small">autumn</span></span>
             <span class="tm mute small">3:58</span>
-            <a class="round glass" href="https://open.spotify.com/album/7pshBhNLUJT2TBhlzyzSJB" target="_blank" rel="noopener" aria-label="No Regret on Spotify">↗</a>
+            <button type="button" class="round glass pp" aria-label="Play No Regret"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path class="pi" d="M3 1 11 6 3 11Z" fill="currentColor"/></svg></button>
             <p>Conceived on a flight from China back to London, five years after AC first arrived in the city; about freedom and the decision to keep pursuing the life she chose.</p>
+            <span class="seek" role="slider" tabindex="0" aria-label="Seek No Regret" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></span>
           </li>
-          <li class="row">
+          <li class="row" data-src="assets/worst-of-me.mp3" data-key="worst-of-me" data-title="The Worst of Me">
             <span class="n mute">02</span>
             <span class="tt"><b>The Worst of Me</b><span class="mute small">winter</span></span>
             <span class="tm mute small">3:21</span>
-            <a class="round glass" href="https://open.spotify.com/album/7pshBhNLUJT2TBhlzyzSJB" target="_blank" rel="noopener" aria-label="The Worst of Me on Spotify">↗</a>
+            <button type="button" class="round glass pp" aria-label="Play The Worst of Me"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path class="pi" d="M3 1 11 6 3 11Z" fill="currentColor"/></svg></button>
             <p>The EP’s most exposed moment, confronting possessiveness, guilt and the damage caused within a relationship with another woman.</p>
+            <span class="seek" role="slider" tabindex="0" aria-label="Seek The Worst of Me" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></span>
           </li>
-          <li class="row here" id="rockyRow">
+          <li class="row here" data-src="assets/rocky.mp3" data-key="rocky" data-title="Rocky">
             <span class="n">03</span>
-            <span class="tt"><b>Rocky</b><span class="mute small">spring · plays here</span></span>
-            <span class="tm mute small" id="dur">5:07</span>
-            <button type="button" class="round solid" id="pp" aria-label="Play Rocky"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path class="pi" d="M3 1 11 6 3 11Z" fill="currentColor"/></svg></button>
+            <span class="tt"><b>Rocky</b><span class="mute small">spring</span></span>
+            <span class="tm mute small">5:07</span>
+            <button type="button" class="round solid pp" aria-label="Play Rocky"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path class="pi" d="M3 1 11 6 3 11Z" fill="currentColor"/></svg></button>
             <p>Folds the sound of the traditional Chinese pipa into melodic electronics.</p>
-            <span class="seek" id="seek" role="slider" tabindex="0" aria-label="Seek Rocky" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="fill"></i></span>
+            <span class="seek" role="slider" tabindex="0" aria-label="Seek Rocky" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></span>
           </li>
-          <li class="row">
+          <li class="row" data-src="assets/summertime.mp3" data-key="summertime" data-title="Summertime Daydream">
             <span class="n mute">04</span>
             <span class="tt"><b>Summertime Daydream</b><span class="mute small">summer</span></span>
             <span class="tm mute small">4:04</span>
-            <a class="round glass" href="https://open.spotify.com/album/7pshBhNLUJT2TBhlzyzSJB" target="_blank" rel="noopener" aria-label="Summertime Daydream on Spotify">↗</a>
+            <button type="button" class="round glass pp" aria-label="Play Summertime Daydream"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path class="pi" d="M3 1 11 6 3 11Z" fill="currentColor"/></svg></button>
             <p>Looks back at the seemingly endless summers of childhood, letting that warmth give way to homesickness and growing older away from home.</p>
+            <span class="seek" role="slider" tabindex="0" aria-label="Seek Summertime Daydream" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></span>
           </li>
           </ol>
         </div>
@@ -420,13 +429,15 @@ footer{padding-block:120px 32px;display:flex;justify-content:space-between;gap:1
           <div class="mail"><span class="small mute">bookings</span><span class="addr">acdotrobot@gmail.com</span><span class="row"><button type="button" class="pill solid" data-copy="acdotrobot@gmail.com">copy</button><a class="pill glass" href="mailto:acdotrobot@gmail.com">email ↗</a></span></div>
           <div class="mail"><span class="small mute">management · general · collabs &amp; partnerships</span><span class="addr"><span class="nb">acdotrobot.management</span><wbr>@gmail.com</span><span class="row"><button type="button" class="pill solid" data-copy="acdotrobot.management@gmail.com">copy</button><a class="pill glass" href="mailto:acdotrobot.management@gmail.com">email ↗</a></span></div>
           <div class="icons">
-            <a class="ico glass" href="https://www.instagram.com/acdotrobot/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></a>
+            <a class="ico glass tear" href="https://www.instagram.com/acdotrobot/" target="_blank" rel="noopener" aria-label="Instagram · acdotrobot" title="Instagram · @acdotrobot"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg><span>main</span></a>
+            <a class="ico glass tear" href="https://www.instagram.com/teardotrobot/" target="_blank" rel="noopener" aria-label="Instagram · teardotrobot" title="Instagram · @teardotrobot"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg><span>tear</span></a>
             <a class="ico glass" href="https://ra.co/dj/acdotrobot" target="_blank" rel="noopener" aria-label="Resident Advisor" title="Resident Advisor"><span class="ra" aria-hidden="true">RA</span></a>
             <a class="ico glass" href="https://open.spotify.com/album/7pshBhNLUJT2TBhlzyzSJB" target="_blank" rel="noopener" aria-label="Spotify" title="Spotify"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
             <a class="ico glass" href="https://music.apple.com/gb/artist/ac-dot-robot/1839580199" target="_blank" rel="noopener" aria-label="Apple Music" title="Apple Music"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.193.4-1.336.53-2.3 1.452-2.865 2.78-.192.448-.292.925-.363 1.408-.056.392-.088.785-.1 1.18 0 .032-.007.062-.01.093v12.223c.01.14.017.283.027.424.05.815.154 1.624.497 2.373.65 1.42 1.738 2.353 3.234 2.801.42.127.856.187 1.293.228.555.053 1.11.06 1.667.06h11.03a12.5 12.5 0 001.57-.1c.822-.106 1.596-.35 2.295-.81a5.046 5.046 0 001.88-2.207c.186-.42.293-.87.37-1.324.113-.675.138-1.358.137-2.04-.002-3.8 0-7.595-.003-11.393zm-6.423 3.99v5.712c0 .417-.058.827-.244 1.206-.29.59-.76.962-1.388 1.14-.35.1-.706.157-1.07.173-.95.045-1.773-.6-1.943-1.536a1.88 1.88 0 011.038-2.022c.323-.16.67-.25 1.018-.324.378-.082.758-.153 1.134-.24.274-.063.457-.23.51-.516a.904.904 0 00.02-.193c0-1.815 0-3.63-.002-5.443a.725.725 0 00-.026-.185c-.04-.15-.15-.243-.304-.234-.16.01-.318.035-.475.066-.76.15-1.52.303-2.28.456l-2.325.47-1.374.278c-.016.003-.032.01-.048.013-.277.077-.377.203-.39.49-.002.042 0 .086 0 .13-.002 2.602 0 5.204-.003 7.805 0 .42-.047.836-.215 1.227-.278.64-.77 1.04-1.434 1.233-.35.1-.71.16-1.075.172-.96.036-1.755-.6-1.92-1.544-.14-.812.23-1.685 1.154-2.075.357-.15.73-.232 1.108-.31.287-.06.575-.116.86-.177.383-.083.583-.323.6-.714v-.15c0-2.96 0-5.922.002-8.882 0-.123.013-.25.042-.37.07-.285.273-.448.546-.518.255-.066.515-.112.774-.165.733-.15 1.466-.296 2.2-.444l2.27-.46c.67-.134 1.34-.27 2.01-.403.22-.043.442-.088.663-.106.31-.025.523.17.554.482.008.073.012.148.012.223.002 1.91.002 3.822 0 5.732z"/></svg></a>
+            <span class="brk" aria-hidden="true"></span>
             <a class="ico glass" href="https://soundcloud.com/user-523526653" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.999 14.165c-.052 1.796-1.612 3.169-3.4 3.169h-8.18a.68.68 0 0 1-.675-.683V7.862a.747.747 0 0 1 .452-.724s.75-.513 2.333-.513a5.364 5.364 0 0 1 2.763.755 5.433 5.433 0 0 1 2.57 3.54c.282-.08.574-.121.868-.12.884 0 1.73.358 2.347.992s.948 1.49.922 2.373ZM10.721 8.421c.247 2.98.427 5.697 0 8.672a.264.264 0 0 1-.53 0c-.395-2.946-.22-5.718 0-8.672a.264.264 0 0 1 .53 0ZM9.072 9.448c.285 2.659.37 4.986-.006 7.655a.277.277 0 0 1-.55 0c-.331-2.63-.256-5.02 0-7.655a.277.277 0 0 1 .556 0Zm-1.663-.257c.27 2.726.39 5.171 0 7.904a.266.266 0 0 1-.532 0c-.38-2.69-.257-5.21 0-7.904a.266.266 0 0 1 .532 0Zm-1.647.77a26.108 26.108 0 0 1-.008 7.147.272.272 0 0 1-.542 0 27.955 27.955 0 0 1 0-7.147.275.275 0 0 1 .55 0Zm-1.67 1.769c.421 1.865.228 3.5-.029 5.388a.257.257 0 0 1-.514 0c-.21-1.858-.398-3.549 0-5.389a.272.272 0 0 1 .543 0Zm-1.655-.273c.388 1.897.26 3.508-.01 5.412-.026.28-.514.283-.54 0-.244-1.878-.347-3.54-.01-5.412a.283.283 0 0 1 .56 0Zm-1.668.911c.4 1.268.257 2.292-.026 3.572a.257.257 0 0 1-.514 0c-.241-1.262-.354-2.312-.023-3.572a.283.283 0 0 1 .563 0Z"/></svg></a>
             <a class="ico glass" href="https://www.youtube.com/@acdotrobot" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-            <a class="ico glass" href="https://bandcamp.com/acdachuan" target="_blank" rel="noopener" aria-label="Bandcamp" title="Bandcamp"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/></svg></a>
+            <a class="ico glass" href="https://acdotrobot.bandcamp.com/album/london-2026-ep" target="_blank" rel="noopener" aria-label="Bandcamp" title="Bandcamp"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/></svg></a>
             <a class="ico glass" href="https://linktr.ee/AC.dot.robot" target="_blank" rel="noopener" aria-label="Linktree" title="Linktree"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m13.73635 5.85251 4.00467-4.11665 2.3248 2.3808-4.20064 4.00466h5.9085v3.30473h-5.9365l4.22865 4.10766-2.3248 2.3338L12.0005 12.099l-5.74052 5.76852-2.3248-2.3248 4.22864-4.10766h-5.9375V8.12132h5.9085L3.93417 4.11666l2.3248-2.3808 4.00468 4.11665V0h3.4727zm-3.4727 10.30614h3.4727V24h-3.4727z"/></svg></a>
           </div>
         </div>
@@ -438,39 +449,54 @@ footer{padding-block:120px 32px;display:flex;justify-content:space-between;gap:1
   <a class="totop glass" id="totop" href="#top" aria-label="Back to top">↑</a>
 </div>
 
-<audio id="audio" src="assets/rocky.mp3" preload="metadata" playsinline></audio>
+<audio id="audio" preload="none" playsinline></audio>
 
 <script>
 (function(){
   var $ = function(s){ return document.querySelector(s); };
 
-  /* rocky: one track, two buttons (opening + tracklist) */
+  /* the EP plays here: one <audio>, four rows. nothing is fetched until the page itself has loaded; a track loads when it is first played */
   var audio = $('#audio'), PLAY = 'M3 1 11 6 3 11Z', PAUSE = 'M2 1h3v10H2zM7 1h3v10H7z';
+  var rows = Array.prototype.slice.call(document.querySelectorAll('.row[data-src]')), cur = document.querySelector('.row.here') || rows[0];
+  var DUR = {'no-regret':238, 'worst-of-me':201, 'rocky':307, 'summertime':244};
   function fmt(s){ s = isFinite(s) ? s : 0; var m = Math.floor(s/60), r = Math.floor(s%60); return m + ':' + (r<10?'0':'') + r; }
-  function toggle(){
-    if(audio.paused){
-      $('#pp').classList.add('wait');
-      var p = audio.play();
-      if(p && p.then) p.then(function(){ $('#pp').classList.remove('wait'); }, function(err){ $('#pp').classList.remove('wait'); audio.load(); var q = audio.play(); if(q && q.catch) q.catch(function(){}); });
-    } else audio.pause();
+  function srcFor(row){ return (window.TRACK_SRC && window.TRACK_SRC(row.getAttribute('data-key'))) || row.getAttribute('data-src'); }
+  function setCur(row){
+    if(row === cur) return;
+    rows.forEach(function(r){ var on = r === row; r.classList.toggle('here', on); r.querySelector('.n').classList.toggle('mute', !on); var b = r.querySelector('.pp'); b.classList.toggle('solid', on); b.classList.toggle('glass', !on); r.querySelector('.tm').textContent = fmt(DUR[r.getAttribute('data-key')]); r.querySelector('.seek i').style.width = '0%'; });
+    cur = row;
   }
-  audio.addEventListener('playing', function(){ $('#pp').classList.remove('wait'); });
+  function load(row){ audio.src = srcFor(row); audio.load(); }
+  function toggle(row){
+    if(row !== cur){ var was = !audio.paused; audio.pause(); setCur(row); load(row); play(); return; }
+    if(!audio.getAttribute('src')) load(row);
+    if(audio.paused) play(); else audio.pause();
+  }
+  function play(){
+    var b = cur.querySelector('.pp'); b.classList.add('wait');
+    var p = audio.play();
+    if(p && p.then) p.then(function(){ b.classList.remove('wait'); }, function(){ b.classList.remove('wait'); audio.load(); var q = audio.play(); if(q && q.catch) q.catch(function(){}); });
+  }
+  audio.addEventListener('playing', function(){ cur.querySelector('.pp').classList.remove('wait'); });
   function sync(){
-    var on = !audio.paused;
-    document.querySelectorAll('.pi').forEach(function(p){ p.setAttribute('d', on ? PAUSE : PLAY); });
-    $('#pp').setAttribute('aria-label', on ? 'Pause Rocky' : 'Play Rocky');
-    
+    var on = !audio.paused && !audio.ended;
+    rows.forEach(function(r){ var mine = r === cur && on; r.querySelector('.pi').setAttribute('d', mine ? PAUSE : PLAY); r.querySelector('.pp').setAttribute('aria-label', (mine ? 'Pause ' : 'Play ') + r.getAttribute('data-title')); });
   }
-  $('#pp').addEventListener('click', toggle);
-  ['play','pause','ended'].forEach(function(ev){ audio.addEventListener(ev, sync); });
-  audio.addEventListener('timeupdate', function(){
-    var d = audio.duration || 307, pc = audio.currentTime / d * 100;
-    $('#fill').style.width = pc + '%'; $('#seek').setAttribute('aria-valuenow', Math.round(pc));
-    $('#dur').textContent = audio.currentTime > 0 ? fmt(audio.currentTime) + ' / ' + fmt(d) : fmt(d);
+  rows.forEach(function(r){
+    r.querySelector('.pp').addEventListener('click', function(){ toggle(r); });
+    var seek = r.querySelector('.seek');
+    seek.addEventListener('click', function(e){ if(r !== cur || !audio.duration) return; var rc = seek.getBoundingClientRect(); audio.currentTime = (e.clientX - rc.left)/rc.width * audio.duration; });
+    seek.addEventListener('keydown', function(e){ if(r !== cur) return; if(e.key==='ArrowRight') audio.currentTime += 5; if(e.key==='ArrowLeft') audio.currentTime -= 5; });
   });
-  var seek = $('#seek');
-  seek.addEventListener('click', function(e){ var r = seek.getBoundingClientRect(); if(audio.duration) audio.currentTime = (e.clientX - r.left)/r.width * audio.duration; });
-  seek.addEventListener('keydown', function(e){ if(e.key==='ArrowRight') audio.currentTime += 5; if(e.key==='ArrowLeft') audio.currentTime -= 5; });
+  ['play','pause','ended'].forEach(function(ev){ audio.addEventListener(ev, sync); });
+  audio.addEventListener('ended', function(){ var k = rows.indexOf(cur); if(k < rows.length - 1){ setCur(rows[k+1]); load(cur); play(); } });
+  audio.addEventListener('timeupdate', function(){
+    var d = audio.duration || DUR[cur.getAttribute('data-key')], pc = audio.currentTime / d * 100;
+    cur.querySelector('.seek i').style.width = pc + '%'; cur.querySelector('.seek').setAttribute('aria-valuenow', Math.round(pc));
+    cur.querySelector('.tm').textContent = audio.currentTime > 0 ? fmt(audio.currentTime) + ' / ' + fmt(d) : fmt(d);
+  });
+  /* once everything else is on screen, point the player at the current track (metadata only, no download yet) */
+  window.addEventListener('load', function(){ setTimeout(function(){ if(!audio.getAttribute('src')){ audio.preload = 'metadata'; load(cur); } }, 800); });
 
   /* playlist box: cut the box beside "london 2026" and let the store buttons sit in the cut, like the reference */
   var wrap = $('#lwrap'), list = $('#list'), head = $('#lhead'), stores = $('#stores');
