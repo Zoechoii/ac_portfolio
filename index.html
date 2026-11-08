@@ -137,6 +137,7 @@ header{display:flex;justify-content:space-between;align-items:center;gap:10px 16
 .lh{display:flex;flex-direction:column;line-height:1.25}
 .lh b{font-size:16px;font-weight:800;letter-spacing:-.03em}
 .rows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;flex:1;justify-content:space-between}
+.list-wrap.notch .rows{margin-top:10px} /* clear the outer corner that follows the cut, so a highlighted first row is not clipped */
 .row{display:grid;grid-template-columns:28px minmax(0,1fr) auto auto;gap:4px 12px;align-items:center;padding:8px 8px 8px 10px;border-radius:var(--r-md);transition:background .2s}
 .row:hover{background:rgba(255,255,255,.08)}
 .row.here{background:rgba(255,255,255,.16);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)}
